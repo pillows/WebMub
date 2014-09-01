@@ -531,6 +531,14 @@ input[type="color"]:focus,
 	color: #666;
 }
 
+#content-comments{
+	width: 100%;
+	padding: 80px 0;
+	font-size: 16px;
+	line-height: 28px;
+	color: #666;
+}
+
 .post-container::before,
 .post-container::after{
 	content: "";
@@ -1640,7 +1648,6 @@ input[type="color"]:focus,
 	margin-top: 5px;
 }
 
-.centering {
-  float:none;
-  margin:0 auto;
+ol.commentlist li {
+list-style: none;
 }
