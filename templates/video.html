@@ -1,0 +1,75 @@
+{% extends "base.html" %}
+{% block content %}
+    <!-- begin:content -->
+    <section id="content"> 
+      <div class="container">
+        <div class="row">
+            <!-- break -->
+            <div class="col-md-2"></div>
+            <div class="col-md-8 col-sm-6">
+                <div class="post-container">
+                    <div class="post-content no-padding">
+                        <video width="100%" height="25%" controls="controls" preload="none"><source src="http://video.webmfiles.org/big-buck-bunny_trailer.webm" type="video/webm" ></video>
+                    </div>
+                    <div class="post-content">
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam</p>
+                    </div>
+                    <div class="post-atribut" >
+                        <div class="row">
+                            <div class="col-md-4 col-sm-4 col-xs-4">
+                                <a href="#"><span><i class="fa fa-heart"></i> 2000</span></a>
+                            </div>
+                            <div class="col-md-4 col-sm-4 col-xs-4">
+                                <a href="#"><span><i class="fa fa-comments"></i> 400</span></a>
+                            </div>
+                            <div class="col-md-4 col-sm-4 col-xs-4">
+                                <a href="#"><span><i class="fa fa-eye"></i> 2500</span></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- end:article -->
+
+      </div>
+    </section>
+    <!-- end:content -->
+
+    <!-- begin:comments -->
+    <section id="comments">
+        <div class="container">
+            <!--start: Row -->
+            <div class="row">
+                <div class="span9">
+                    <div class="comments-sec">
+                        <ol class="commentlist">
+                            <li>
+                                <div class="comments">
+                                    
+                                    <div class="comment-des">
+                                        <div class="comment-by"><strong>Lucas Luck</strong><span class="reply"><span style="color:#aaa"></div>
+                                        <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. </p>
+                                    </div>
+                                </div>
+                                <ol class="childlist">
+                                    <li>
+                                        <div class="comments">
+                    
+                                            <div class="comment-des">
+                                                <div class="comment-by"><strong>Lucas Luck</strong><span class="reply"><span style="color:#aaa"></div>
+                                                <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.</p>
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ol>
+                            </li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- end:comments -->
+{% endblock %}

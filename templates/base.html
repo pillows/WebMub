@@ -12,14 +12,14 @@
     <title>WebMub | Home</title>
 
     <!-- Bootstrap core CSS -->
-    <link href="css/bootstrap.css" rel="stylesheet">
+    <link href="{{ url_for('static', filename='css/bootstrap.css')}}" rel="stylesheet">
 
     <!-- Custom styles for this template -->
     <link href='http://fonts.googleapis.com/css?family=Raleway:400,800' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Noto+Serif:700,400italic' rel='stylesheet' type='text/css'>
-    <link href="css/font-awesome.min.css" rel="stylesheet">
-    <link href="css/style.css" rel="stylesheet">
-    <link href="css/responsive.css" rel="stylesheet">
+    <link href="{{ url_for('static', filename='css/font-awesome.min.css')}}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='css/style.css')}}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='css/responsive.css')}}" rel="stylesheet">
 
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -58,6 +58,12 @@
     </nav>
     <!-- end:navbar -->
 
+    <!-- begin:header -->
+    <section id="header">
+        <div class="overlay"></div>
+    </section>
+    <!-- end:header -->
+
     {% block content %}
     {% endblock %}
 
@@ -86,12 +92,13 @@
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
-    <script src="js/jquery.js"></script>
-    <script src="js/bootstrap.js"></script>
-    <script src="js/masonry.pkgd.min.js"></script>
-    <script src="js/imagesloaded.pkgd.min.js"></script>
-    <script src="js/jquery.isotope.min.js"></script>
-    <script src="js/jquery.easing.js"></script>
-    <script src="js/script.js"></script>
+
+    <script src="{{ url_for('static', filename='js/jquery.js')}}"></script>
+    <script src="{{ url_for('static', filename='js/bootstrap.js')}}"></script>
+    <script src="{{ url_for('static', filename='js/masonry.pkgd.min.js')}}"></script>
+    <script src="{{ url_for('static', filename='js/imagesloaded.pkgd.min.js')}}"></script>
+    <script src="{{ url_for('static', filename='js/jquery.isotope.min.js')}}"></script>
+    <script src="{{ url_for('static', filename='js/jquery.easing.js')}}"></script>
+    <script src="{{ url_for('static', filename='js/script.js')}}"></script>
   </body>
 </html>
