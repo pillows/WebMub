@@ -1,5 +1,11 @@
 $(document).ready(function(){
 
+  $('#openBtn').click(function(){
+    $('#myModal').modal({show:true})
+  });
+
+  
+
 	/* Navbar */
 	$(window).scroll(function(){
 		if( $(window).scrollTop() > 80){
