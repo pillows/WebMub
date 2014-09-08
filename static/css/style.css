@@ -569,7 +569,6 @@ input[type="color"]:focus,
 
 .post-atribut{
 	background-color: #fff;
-	border: 1px solid #eee;
 	border-bottom-width: 3px;
 	padding: 20px 25px;
 }
@@ -1737,3 +1736,29 @@ list-style: none;
   display: block;
   border-radius: 0;
 }
+
+.btn-file {
+  position: relative;
+  overflow: hidden;
+}
+.btn-file input[type=file] {
+  position: absolute;
+  top: 0;
+  right: 0;
+  min-width: 100%;
+  min-height: 100%;
+  font-size: 100px;
+  text-align: right;
+  filter: alpha(opacity=0);
+  opacity: 0;
+  background: red;
+  cursor: inherit;
+  display: block;
+}
+input[readonly] {
+  background-color: white !important;
+  cursor: text !important;
+}
+
+.white-tooltip + .tooltip > .tooltip-inner {background-color: #fff;}
+.white-tooltip + .tooltip > .tooltip-arrow { border-bottom-color:#fff; }

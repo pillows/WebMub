@@ -1,123 +1,134 @@
-
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <link rel="shortcut icon" href="img/favicon.png">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+        <meta name="description" content="">
+        <meta name="author" content="">
+        <link rel="shortcut icon" href="img/favicon.png">
+        <title>WebMub | Home</title>
+        <!-- Bootstrap core CSS -->
+        <link href="{{ url_for('static', filename='css/bootstrap.css')}}" rel="stylesheet">
+        <!-- Custom styles for this template -->
+        <link href='http://fonts.googleapis.com/css?family=Raleway:400,800' rel='stylesheet' type='text/css'>
+        <link href='http://fonts.googleapis.com/css?family=Noto+Serif:700,400italic' rel='stylesheet' type='text/css'>
+        <link href="{{ url_for('static', filename='css/font-awesome.min.css')}}" rel="stylesheet">
+        <link href="{{ url_for('static', filename='css/style.css')}}" rel="stylesheet">
+        <link href="{{ url_for('static', filename='css/responsive.css')}}" rel="stylesheet">
+        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!--[if lt IE 9]>
+        <script src="js/html5shiv.js"></script>
+        <script src="js/respond.min.js"></script>
+        <![endif]-->
+    </head>
+    <body>
+        <!-- begin:navbar -->
+        <nav class="navbar navbar-default navbar-transparent navbar-fixed-top" role="navigation">
+            <div class="container">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-top">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="index.html"><span>WebMub</span></a>
+                </div>
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse" id="navbar-top">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li class="active"><a href="index.html">Home</a></li>
+                        <li><a href="#" id="openBtn">Upload WebM</a></li>
+                        <li><a href="contact.html">Login</a></li>
+                        <li><a href="page.html">Sign Up</a></li>
+                    </ul>
+                </div>
+                <!-- /.navbar-collapse -->
+            </div>
+            <!-- /.container-fluid -->
+        </nav>
+        <!-- end:navbar -->
+        <!-- begin:modal -->
+        <div id="myModal" class="modal fade" tabindex="-1" role="dialog">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">×</button>
+                        <h3>WebM/GIF Upload</h3>
+                    </div>
+                    <div class="modal-body">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-lg-6 col-sm-6 col-12">
+                                    <h3>Upload WebM/GIF</h3>
+                                    <div class="input-group">
+                                        <span class="input-group-btn">
+                                        <span class="btn btn-primary btn-file">
+                                        Browse&hellip; <input type="file">
+                                        </span>
+                                        </span>
+                                        <input type="text" class="form-control" readonly>
+                                    </div>
+                                    <h3>OR</h3>
+                                    <h3>Upload From Web</h3>
+                                    <div class="form-group">
+                                        <input type="text" class="form-control">
+                                    </div>
 
-    <title>WebMub | Home</title>
+                                    <hr>
 
-    <!-- Bootstrap core CSS -->
-    <link href="{{ url_for('static', filename='css/bootstrap.css')}}" rel="stylesheet">
-
-    <!-- Custom styles for this template -->
-    <link href='http://fonts.googleapis.com/css?family=Raleway:400,800' rel='stylesheet' type='text/css'>
-    <link href='http://fonts.googleapis.com/css?family=Noto+Serif:700,400italic' rel='stylesheet' type='text/css'>
-    <link href="{{ url_for('static', filename='css/font-awesome.min.css')}}" rel="stylesheet">
-    <link href="{{ url_for('static', filename='css/style.css')}}" rel="stylesheet">
-    <link href="{{ url_for('static', filename='css/responsive.css')}}" rel="stylesheet">
-
-    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!--[if lt IE 9]>
-      <script src="js/html5shiv.js"></script>
-      <script src="js/respond.min.js"></script>
-    <![endif]-->
-  </head>
-
-  <body>
-
-    <!-- begin:navbar -->
-    <nav class="navbar navbar-default navbar-transparent navbar-fixed-top" role="navigation">
-      <div class="container">
-        <!-- Brand and toggle get grouped for better mobile display -->
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-top">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand" href="index.html"><span>WebMub</span></a>
+                                    <h3>WebM Description</h3>
+                                    <div class="form-group">
+                                        <textarea class="form-control" style="height: 100px;"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
         </div>
-
-        <!-- Collect the nav links, forms, and other content for toggling -->
-        <div class="collapse navbar-collapse" id="navbar-top">
-          <ul class="nav navbar-nav navbar-right">
-            <li class="active"><a href="index.html">Home</a></li>
-            <li><a href="#" id="openBtn">Upload WebM</a></li>
-            <li><a href="contact.html">Login</a></li>
-            <li><a href="page.html">Sign Up</a></li>
-            
-          </ul>
-        </div><!-- /.navbar-collapse -->
-      </div><!-- /.container-fluid -->
-    </nav>
-    <!-- end:navbar -->
-
-    <!-- begin:modal -->
-    <div id="myModal" class="modal fade" tabindex="-1" role="dialog">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal">×</button>
-            <h3>WebM/GIF Upload</h3>
-        </div><ul><li></li></ul>
-        <div class="modal-body">
-          <p>What do you think?</p>
-        </div>
-        <div class="modal-footer">
-          <button class="btn" data-dismiss="modal">Close</button>
-        </div>
-        </div>
-      </div>
-    </div>
-    <!-- end:modal -->
-
-    <!-- begin:header -->
-    <section id="header">
-        <div class="overlay"></div>
-    </section>
-    <!-- end:header -->
-
-    {% block content %}
-    {% endblock %}
-
-    <!-- begin:copyright -->
-    <section id="copyright" class="navbar-fixed-bottom">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-6 col-sm-6 copy-left">
-            <p>Copyright &copy; 2014 <strong>WebMub</strong>. All Right Reserved.</p>
-          </div>
-
-          <div class="col-md-6 col-sm-6 copy-right">
-            <ul class="list-inline social-icon">
-              <li><a href="#" class="icon-twitter" rel="tooltip" title="" data-placement="top" data-original-title="Twitter"><i class="fa fa-twitter"></i></a></li>
-              <li><a href="#" class="icon-facebook" rel="tooltip" title="" data-placement="top" data-original-title="Facebook"><i class="fa fa-facebook-square"></i></a></li>
-              <li><a href="#" class="icon-youtube" rel="tooltip" title="" data-placement="top" data-original-title="Youtube"><i class="fa fa-youtube"></i></a></li>
-              <li><a href="#" class="icon-instagram" rel="tooltip" title="" data-placement="top" data-original-title="Instagram"><i class="fa fa-instagram"></i></a></li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </section>
-    <!-- end:copyrigt -->
-
-   
-    <!-- Bootstrap core JavaScript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-
-    <script src="{{ url_for('static', filename='js/jquery.js')}}"></script>
-    <script src="{{ url_for('static', filename='js/bootstrap.js')}}"></script>
-    <script src="{{ url_for('static', filename='js/masonry.pkgd.min.js')}}"></script>
-    <script src="{{ url_for('static', filename='js/imagesloaded.pkgd.min.js')}}"></script>
-    <script src="{{ url_for('static', filename='js/jquery.isotope.min.js')}}"></script>
-    <script src="{{ url_for('static', filename='js/jquery.easing.js')}}"></script>
-    <script src="{{ url_for('static', filename='js/script.js')}}"></script>
-  </body>
+        <!-- end:modal -->
+        <!-- begin:header -->
+        <section id="header">
+            <div class="overlay"></div>
+        </section>
+        <!-- end:header -->
+        {% block content %}
+        {% endblock %}
+        <!-- begin:copyright -->
+        <section id="copyright" class="navbar-fixed-bottom">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6 col-sm-6 copy-left">
+                        <p>Copyright &copy; 2014 <strong>WebMub</strong>. All Right Reserved.</p>
+                    </div>
+                    <div class="col-md-6 col-sm-6 copy-right">
+                        <ul class="list-inline social-icon">
+                            <li><a href="#" class="icon-twitter" rel="tooltip" title="" data-placement="top" data-original-title="Twitter"><i class="fa fa-twitter"></i></a></li>
+                            <li><a href="#" class="icon-facebook" rel="tooltip" title="" data-placement="top" data-original-title="Facebook"><i class="fa fa-facebook-square"></i></a></li>
+                            <li><a href="#" class="icon-youtube" rel="tooltip" title="" data-placement="top" data-original-title="Youtube"><i class="fa fa-youtube"></i></a></li>
+                            <li><a href="#" class="icon-instagram" rel="tooltip" title="" data-placement="top" data-original-title="Instagram"><i class="fa fa-instagram"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- end:copyrigt -->
+        <!-- Bootstrap core JavaScript
+            ================================================== -->
+        <!-- Placed at the end of the document so the pages load faster -->
+        <script src="{{ url_for('static', filename='js/jquery.js')}}"></script>
+        <script src="{{ url_for('static', filename='js/bootstrap.js')}}"></script>
+        <script src="{{ url_for('static', filename='js/masonry.pkgd.min.js')}}"></script>
+        <script src="{{ url_for('static', filename='js/imagesloaded.pkgd.min.js')}}"></script>
+        <script src="{{ url_for('static', filename='js/jquery.isotope.min.js')}}"></script>
+        <script src="{{ url_for('static', filename='js/jquery.easing.js')}}"></script>
+        <script src="{{ url_for('static', filename='js/script.js')}}"></script>
+    </body>
 </html>

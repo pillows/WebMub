@@ -4,7 +4,7 @@ $(document).ready(function(){
     $('#myModal').modal({show:true})
   });
 
-  
+  $("[data-toggle=tooltip]").tooltip();
 
 	/* Navbar */
 	$(window).scroll(function(){
