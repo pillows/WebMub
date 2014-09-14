@@ -531,6 +531,13 @@ input[type="color"]:focus,
 	color: #666;
 }
 
+#profile{
+	width: 100%;
+	font-size: 16px;
+	line-height: 28px;
+	color: #666;
+}
+
 #content-comments{
 	width: 100%;
 	padding: 80px 0;
@@ -1762,3 +1769,57 @@ input[readonly] {
 
 .white-tooltip + .tooltip > .tooltip-inner {background-color: #fff;}
 .white-tooltip + .tooltip > .tooltip-arrow { border-bottom-color:#fff; }
+
+#people {
+  position: relative;
+  margin: 80px auto;
+  padding: 0;
+  width: 480px;
+  font-family: 'Raleway', sans-serif;
+  font-size: 16px;
+  line-height: 22px;
+  color: #3b3b3b;
+  -webkit-font-smoothing: antialiased;
+  list-style-type: none; }
+  #people li {
+    position: relative;
+    margin: 0 0 40px 0;
+    padding: 10px 8px 10px 54px;
+    height: 60px;
+    border: 1px solid #bbbbbb;
+    border-radius: 4px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06), inset 0 1px 0 white;
+    background: #f6f6f6; }
+    #people li img {
+      position: absolute;
+      top: -16px;
+      left: -16px;
+      z-index: 10;
+      margin: 0;
+      padding: 4px;
+      width: 50px;
+      height: 50px;
+      border: 1px solid #bbbbbb;
+      box-shadow: 0 1px 0 white;
+      border-radius: 50%;
+      background: white; }
+    #people li h2 {
+      margin: 0;
+      font-size: 18px;
+      line-height: 22px;
+      font-weight: 400;
+      color: #4b4b4b;
+      text-shadow: -1px -1px 0 rgba(255, 255, 255, 0.7); }
+    #people li .info {
+      margin: 0;
+      display: block; }
+      #people li .info em {
+        margin: 0 18px 0 0;
+        font-size: 11px;
+        line-height: 20px;
+        font-weight: 400;
+        font-style: normal;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        color: #5b5b5b;
+        float: left; }

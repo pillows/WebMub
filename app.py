@@ -4,6 +4,7 @@ from login import login
 from register import register
 from dashboard import dashboard
 from video import video
+from profile import profile
 import config
 
 app = Flask(__name__)
@@ -16,6 +17,7 @@ app.register_blueprint(login)
 app.register_blueprint(register)
 app.register_blueprint(dashboard)
 app.register_blueprint(video)
+app.register_blueprint(profile)
 
 @app.route("/logout/")
 def logout():
