@@ -10,6 +10,7 @@ import config
 app = Flask(__name__)
 app.secret_key = "HUAa%[3cI76px',Bu}?9nS6~_4x&:{57mBX|FE2p0;<}0fX{E9m695xs`Q(PN}R"
 app.debug = True
+
 port = 5000
 
 app.register_blueprint(index)
