@@ -531,6 +531,14 @@ input[type="color"]:focus,
 	color: #666;
 }
 
+#video{
+	width: 100%;
+	padding: 40px 0 0 0;
+	font-size: 16px;
+	line-height: 28px;
+	color: #666;
+}
+
 #profile{
 	width: 100%;
 	font-size: 16px;
@@ -540,10 +548,7 @@ input[type="color"]:focus,
 
 #content-comments{
 	width: 100%;
-	padding: 80px 0;
-	font-size: 16px;
-	line-height: 28px;
-	color: #666;
+	margin: 0 auto;
 }
 
 .post-container::before,
@@ -1823,3 +1828,41 @@ input[readonly] {
         text-transform: uppercase;
         color: #5b5b5b;
         float: left; }
+        
+#invisible {
+	margin-bottom:100px;
+}
+
+.thread_comment .post>.wrapper {
+position: relative;
+width: 630px;
+margin-bottom: 20px;
+border: 1px solid #ccc;
+background: #fff;
+-webkit-box-shadow: 0 0 3px rgba(0,0,0,0.25);
+-moz-box-shadow: 0 0 3px rgba(0,0,0,0.25);
+box-shadow: 0 0 3px rgba(0,0,0,0.25);
+}
+
+.thread_comment .sticker_bg {
+display: none;
+opacity: 0.15;
+filter: alpha(opacity=15);
+}
+
+.thread_comment.text_only .post .inner_wrapper {
+padding: 10px 15px 5px;
+}
+.thread_comment .post .inner_wrapper {
+position: relative;
+padding: 15px;
+z-index: 1;
+}
+
+.thread_comment .post {
+width: 630px;
+}
+.thread_comment .user, .thread_comment .post {
+float: left;
+position: relative;
+}

@@ -1,19 +1,22 @@
 {% extends "base.html" %}
 {% block content %}
-    <!-- begin:content -->
-    <section id="content"> 
-      <div class="container">
+<!-- begin:content -->
+<section id="video">
+    <div class="container">
         <div class="row">
             <!-- break -->
             <div class="col-md-2"></div>
             <div class="col-md-8 col-sm-6">
                 <div class="post-container">
                     <div class="post-content no-padding">
-                        <video width="100%" height="25%" controls="controls" preload="none"><source src="http://video.webmfiles.org/big-buck-bunny_trailer.webm" type="video/webm" ></video>
+                        <video width="100%" height="25%" controls="controls" preload="none">
+                            <source src="http://video.webmfiles.org/big-buck-bunny_trailer.webm" type="video/webm" >
+                        </video>
                     </div>
                     <div class="post-content">
                         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam</p>
+                            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam
+                        </p>
                     </div>
                     <div class="post-atribut" >
                         <div class="row">
@@ -32,44 +35,39 @@
             </div>
         </div>
         <!-- end:article -->
-
-      </div>
-    </section>
-    <!-- end:content -->
-
-    <!-- begin:comments -->
-    <section id="comments">
-        <div class="container">
-            <!--start: Row -->
-            <div class="row">
-                <div class="span9">
-                    <div class="comments-sec">
-                        <ol class="commentlist">
-                            <li>
-                                <div class="comments">
-                                    
-                                    <div class="comment-des">
-                                        <div class="comment-by"><strong>Lucas Luck</strong><span class="reply"><span style="color:#aaa"></div>
-                                        <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. </p>
-                                    </div>
-                                </div>
-                                <ol class="childlist">
-                                    <li>
-                                        <div class="comments">
-                    
-                                            <div class="comment-des">
-                                                <div class="comment-by"><strong>Lucas Luck</strong><span class="reply"><span style="color:#aaa"></div>
-                                                <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.</p>
-                                            </div>
-                                        </div>
-                                    </li>
-                                </ol>
-                            </li>
-                        </ol>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- end:comments -->
+    </div>
+</section>
+<!-- end:content -->
+<!-- begin:comments -->
+<section id="content-comments" class="pagination-centered">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-2"></div>
+            <div class="col-md-8 col-sm-6">
+			    <ul class="list-unstyled">
+			        <li class="thread_comment dismissable text_only">
+			            <div class="post">
+			                <div class="wrapper stickerable">
+			                    <div class="inner_wrapper">
+			                        <p class="caption">
+			                            <span class="ugc_text">
+			                            Lorem ipsum
+			                            </span>
+			                        </p>
+			                        <div class="response_actions">
+			                        	<div style="display:inline-block" class="user">By <a href="/u/Pillows">Pillows</a></div>
+			                            <a style="text-align:right" title="Reply to this post" class="reply_link logged_in tooltipped"><div class="reply_icon">Reply</div>
+			                            </a>
+			                        </div>
+			                    </div>
+			                </div>
+			            </div>
+			        </li>
+			    </ul>
+			</div>
+		</div>
+	</div>
+</section>
+<div id="invisible"></div>
+<!-- end:comments -->
 {% endblock %}
