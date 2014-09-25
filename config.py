@@ -1,10 +1,10 @@
 import pymongo
 import hashlib
-import time
+db = pymongo.MongoClient("localhost", 27017).webmub
 UPLOAD_FOLDER = 'uploads/'
 ALLOWED_EXTENSIONS = set(['gif','webm'])
 
-db = pymongo.MongoClient("localhost", 27017).webmub
+
 
 def protect(string):
     for _ in range(1000):

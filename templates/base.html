@@ -39,10 +39,14 @@
                 <!-- Collect the nav links, forms, and other content for toggling -->
                 <div class="collapse navbar-collapse" id="navbar-top">
                     <ul class="nav navbar-nav navbar-right">
-                        <li class="active"><a href="index.html">Home</a></li>
+                        <li class="active"><a href="/">Home</a></li>
                         <li><a href="#" id="openBtn">Upload WebM</a></li>
-                        <li><a href="contact.html">Login</a></li>
-                        <li><a href="page.html">Sign Up</a></li>
+                        {% if session['login'] %}
+                        <li><a href="/profile/">{{ session['login'] }}</a></li>
+                        {% else %}
+                        <li><a href="/login/">Login</a></li>
+                        <li><a href="/register/">Sign Up</a></li>
+                        {% endif %}
                     </ul>
                 </div>
                 <!-- /.navbar-collapse -->
@@ -60,27 +64,26 @@
 	                        <h3>WebM/GIF Upload</h3>
 	                    </div>
 	                    <div class="modal-body">
-	                        
-	                            <div class="container">
-	                                <div class="row">
-	                                    <div class="col-lg-6 col-sm-6 col-12">
-	                                        <h3>Upload WebM/GIF</h3>
-	                                        <div class="input-group">
-	                                            <span class="input-group-btn">
-	                                            <span class="btn btn-primary btn-file">
-	                                            Browse&hellip; <input type="file" name="file">
-	                                            </span>
-	                                            </span>
-	                                            <input type="text" class="form-control" readonly name="url">
-	                                        </div>
-	                                        <h3>OR</h3>
-	                                        <h3>Upload From Web</h3>
-	                                        <div class="form-group">
-	                                            <input type="text" class="form-control">
-	                                        </div>
-										</div>
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-lg-6 col-sm-6 col-12">
+                                        <h3>Upload WebM/GIF</h3>
+                                        <div class="input-group">
+                                            <span class="input-group-btn">
+                                            <span class="btn btn-primary btn-file">
+                                            Browse&hellip; <input type="file" name="file">
+                                            </span>
+                                            </span>
+                                            <input type="text" class="form-control" readonly name="url">
+                                        </div>
+                                        <h3>OR</h3>
+                                        <h3>Upload From Web</h3>
+                                        <div class="form-group">
+                                            <input type="text" class="form-control">
+                                        </div>
 									</div>
 								</div>
+							</div>
 	                    </div>
 	                    <div class="modal-footer">
 	                    	<input type="submit" value="Upload" class="btn btn-primary"/>
@@ -96,7 +99,13 @@
             <div class="overlay"></div>
         </section>
         <!-- end:header -->
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+        <div class="alert alert-danger"><center>{{ messages[0] }}</center></div>                        
+		{% endif %}  
+		{% endwith %}
         {% block content %}
+        
         {% endblock %}
         <!-- begin:copyright -->
         <section id="copyright" class="navbar-fixed-bottom panel-footer" style="margin-top:100px;">
