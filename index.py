@@ -1,12 +1,12 @@
 from flask import url_for, Blueprint, render_template, redirect, session, flash, request
-from config import db
+from config import *
 import urllib2
 import os
 index=Blueprint("index",__name__)
 
 def allowed_file(filename):
     return '.' in filename and \
-           filename.rsplit('.', 1)[1] in config.ALLOWED_EXTENSIONS
+           filename.rsplit('.', 1)[1] in ALLOWED_EXTENSIONS
          
 @index.route("/",methods=['GET','POST'])
 def index_():
@@ -22,11 +22,11 @@ def index_():
 			
 			if file and allowed_file(filename):
 				#Save the file to the upload folder. Maybe a CDN in the future.
-				file.save(os.path.join(config.UPLOAD_FOLDER, filename))
+				file.save(os.path.join(UPLOAD_FOLDER, filename))
 				
 				#Get the random URL:
-				url = config.generate(user)
-				db.webm.insert({"short":url, "path":os.path.join(config.UPLOAD_FOLDER, filename), "user":user, "points":0, "comments":[{}]})
+				url = generate()
+				db.webm.insert({"short":url, "path":os.path.join(UPLOAD_FOLDER, filename), "user":user, "points":0, "comments":[{}]})
 				return redirect("/" + url) #Redirect to a random URL.
 		#Upload via URL
 		'''
