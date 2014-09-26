@@ -27,7 +27,7 @@
                                 <a href="#"><span><i class="fa fa-comments"></i> 400</span></a>
                             </div>
                             <div class="col-md-4 col-sm-4 col-xs-4">
-                                <a href="#"><span><i class="fa fa-eye"></i> 2500</span></a>
+                                <a href="#"><span><i class="fa fa-eye"></i> {{ data['views'] }}</span></a>
                             </div>
                         </div>
                     </div>
@@ -46,7 +46,18 @@
             <div class="col-md-8 col-sm-6">
 			    <ul class="list-unstyled">
 			        <li class="thread_comment dismissable text_only">
+			            
 			            <div class="post">
+			                <div class="post_comment">
+    		                    <div class="form-group">
+    		                        <form method="POST">
+                                        <input type="text" id="comment_box" name="comments" class="comment_box" placeholder="Confess thy opinion." size="255">
+                                        <input type="submit" value="Post" class="btn btn-primary">
+                                        <div id="count">255
+                                        </div>
+    		                        </form>
+                                </div>
+		                    </div>
 			                <div class="wrapper stickerable">
 			                    <div class="inner_wrapper">
 			                        <p class="caption">

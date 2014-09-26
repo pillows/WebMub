@@ -5,6 +5,16 @@ $(document).ready(function(){
   });
 
   $("[data-toggle=tooltip]").tooltip();
+  
+  $("#comment_box").keyup(function(){
+      var chars = $("#comment_box").val().length;
+      var charsLeft = 255 - parseInt(chars);
+      //Debug
+      //console.log(charsLeft);
+      $('#count').html(charsLeft);
+      
+  });
+  
 
 	/* Navbar */
 	$(window).scroll(function(){
