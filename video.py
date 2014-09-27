@@ -5,6 +5,15 @@ video=Blueprint("video",__name__)
 @video.route("/<sid>/",methods=['GET','POST'])
 def video_(sid):
     data = db.webm.find_one({"short":sid})
+    comments = db.comments.find({"short":sid})
     if request.method == "GET":
         db.webm.update({"short":sid},{'$inc':{ "views":1 }})
-    return render_template("video.html",data=data)
+    else:
+        comment = request.form['comment']
+        
+        if len(comment) <= 255:
+            user = session['login']
+            db.comments.insert({"short":sid, "parent":None, "comment":comment, "user":user, "points":0})
+        else:
+            flash("Your comment is too long")
+    return render_template("video.html",data=data, comments=comments)

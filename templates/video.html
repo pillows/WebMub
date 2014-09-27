@@ -3,9 +3,21 @@
 <!-- begin:content -->
 <section id="video">
     <div class="container">
-        <div class="row">
+        <div class="row row-eq-height">
             <!-- break -->
-            <div class="col-md-2"></div>
+            <div class="col-md-2">
+                <div class="text-center" style="vertical-align:middle; margin-top:100%">
+                    <a href="/issue/up-vote/">
+                        <i class="glyphicon glyphicon-chevron-up"></i>
+                    </a>
+                </div>
+                <div id="points">600</div>
+                <div class="text-center" style="vertical-align:middle; ">
+                    <a href="/issue/down-vote/">
+                        <i class="glyphicon glyphicon-chevron-down"></i>
+                    </a>
+                </div>
+            </div>
             <div class="col-md-8 col-sm-6">
                 <div class="post-container">
                     <div class="post-content no-padding">
@@ -51,27 +63,30 @@
 			                <div class="post_comment">
     		                    <div class="form-group">
     		                        <form method="POST">
-                                        <input type="text" id="comment_box" name="comments" class="comment_box" placeholder="Confess thy opinion." size="255">
+                                        <input type="text" id="comment_box" name="comment" class="comment_box" placeholder="Confess thy opinion." size="255">
                                         <input type="submit" value="Post" class="btn btn-primary">
                                         <div id="count">255
                                         </div>
     		                        </form>
                                 </div>
 		                    </div>
+		                    
+		                    {% for x in comments %}
 			                <div class="wrapper stickerable">
 			                    <div class="inner_wrapper">
 			                        <p class="caption">
 			                            <span class="ugc_text">
-			                            Lorem ipsum
+			                            {{ x['comment'] }}
 			                            </span>
 			                        </p>
 			                        <div class="response_actions">
-			                        	<div style="display:inline-block" class="user">By <a href="/u/Pillows">Pillows</a></div>
+			                        	<div style="display:inline-block" class="user">By <a href="/u/{{ x['user'] }}">{{ x['user'] }}</a></div>
 			                            <a style="text-align:right" title="Reply to this post" class="reply_link logged_in tooltipped"><div class="reply_icon">Reply</div>
 			                            </a>
 			                        </div>
 			                    </div>
 			                </div>
+			                {% endfor %}
 			            </div>
 			        </li>
 			    </ul>

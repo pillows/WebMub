@@ -1836,7 +1836,7 @@ input[readonly] {
 .thread_comment .post>.wrapper {
 position: relative;
 width: 630px;
-margin-bottom: 20px;
+margin-bottom: 10px;
 border: 1px solid #ccc;
 background: #fff;
 -webkit-box-shadow: 0 0 3px rgba(0,0,0,0.25);
@@ -1882,7 +1882,6 @@ position: relative;
     background-color: #fff;
     background-image: none;
     border: 1px solid #ccc;
-    border-radius: 4px;
     -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
     box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
     -webkit-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
@@ -1891,4 +1890,15 @@ position: relative;
 
 #count {
     display:inline;
+}
+
+.row-eq-height {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display:         flex;
+}
+
+#points {
+    text-align: center;
 }
