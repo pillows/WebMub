@@ -2,94 +2,114 @@
 {% block content %}
 <!-- begin:content -->
 <section id="video">
-    <div class="container">
-        <div class="row row-eq-height">
-            <!-- break -->
-            <div class="col-md-2">
-                <div class="text-center" style="vertical-align:middle; margin-top:100%">
-                    <a href="/issue/up-vote/">
-                        <i class="glyphicon glyphicon-chevron-up"></i>
-                    </a>
-                </div>
-                <div id="points">600</div>
-                <div class="text-center" style="vertical-align:middle; ">
-                    <a href="/issue/down-vote/">
-                        <i class="glyphicon glyphicon-chevron-down"></i>
-                    </a>
-                </div>
-            </div>
-            <div class="col-md-8 col-sm-6">
-                <div class="post-container">
-                    <div class="post-content no-padding">
-                        <video width="100%" height="25%" controls="controls" preload="none">
-                            <source src="http://video.webmfiles.org/big-buck-bunny_trailer.webm" type="video/webm" >
-                        </video>
-                    </div>
-                    <div class="post-content">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam
-                        </p>
-                    </div>
-                    <div class="post-atribut" >
-                        <div class="row">
-                            <div class="col-md-4 col-sm-4 col-xs-4">
-                                <a href="#"><span><i class="fa fa-heart"></i> {{ data['points'] }}</span></a>
-                            </div>
-                            <div class="col-md-4 col-sm-4 col-xs-4">
-                                <a href="#"><span><i class="fa fa-comments"></i> 400</span></a>
-                            </div>
-                            <div class="col-md-4 col-sm-4 col-xs-4">
-                                <a href="#"><span><i class="fa fa-eye"></i> {{ data['views'] }}</span></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- end:article -->
-    </div>
+	<div class="container">
+		<div class="row row-eq-height">
+			<!-- break -->
+			<div class="col-md-2">
+				<div class="text-center" style="vertical-align:middle; margin-top:100%">
+					<a href="/issue/up-vote/">
+					<i class="glyphicon glyphicon-chevron-up"></i>
+					</a>
+				</div>
+				<div id="points">600</div>
+				<div class="text-center" style="vertical-align:middle; ">
+					<a href="/issue/down-vote/">
+					<i class="glyphicon glyphicon-chevron-down"></i>
+					</a>
+				</div>
+			</div>
+			<div class="col-md-8 col-sm-6">
+				<div class="post-container">
+					<div class="post-content no-padding">
+						<video width="100%" height="25%" controls="controls" preload="none">
+							<source src="http://video.webmfiles.org/big-buck-bunny_trailer.webm" type="video/webm" >
+						</video>
+					</div>
+					<div class="post-content">
+						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+							tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam
+						</p>
+					</div>
+					<div class="post-atribut" >
+						<div class="row">
+							<div class="col-md-4 col-sm-4 col-xs-4">
+								<a href="#"><span><i class="fa fa-heart"></i> {{ data['points'] }}</span></a>
+							</div>
+							<div class="col-md-4 col-sm-4 col-xs-4">
+								<a href="#"><span><i class="fa fa-comments"></i> 400</span></a>
+							</div>
+							<div class="col-md-4 col-sm-4 col-xs-4">
+								<a href="#"><span><i class="fa fa-eye"></i> {{ data['views'] }}</span></a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- end:article -->
+	</div>
 </section>
 <!-- end:content -->
 <!-- begin:comments -->
 <section id="content-comments" class="pagination-centered">
 	<div class="container">
 		<div class="row">
-			<div class="col-md-2"></div>
-            <div class="col-md-8 col-sm-6">
-			    <ul class="list-unstyled">
-			        <li class="thread_comment dismissable text_only">
-			            
-			            <div class="post">
-			                <div class="post_comment">
-    		                    <div class="form-group">
-    		                        <form method="POST">
-                                        <input type="text" id="comment_box" name="comment" class="comment_box" placeholder="Confess thy opinion." size="255">
-                                        <input type="submit" value="Post" class="btn btn-primary">
-                                        <div id="count">255
-                                        </div>
-    		                        </form>
-                                </div>
-		                    </div>
-		                    
-		                    {% for x in comments %}
-			                <div class="wrapper stickerable">
-			                    <div class="inner_wrapper">
-			                        <p class="caption">
-			                            <span class="ugc_text">
-			                            {{ x['comment'] }}
-			                            </span>
-			                        </p>
-			                        <div class="response_actions">
-			                        	<div style="display:inline-block" class="user">By <a href="/u/{{ x['user'] }}">{{ x['user'] }}</a></div>
-			                            <a style="text-align:right" title="Reply to this post" class="reply_link logged_in tooltipped"><div class="reply_icon">Reply</div>
-			                            </a>
-			                        </div>
-			                    </div>
-			                </div>
-			                {% endfor %}
-			            </div>
-			        </li>
-			    </ul>
+			<div class="col-md-2">
+			</div>
+			<div class="col-md-8 col-sm-6">
+				<ul class="list-unstyled">
+					<li class="thread_comment dismissable text_only">
+						<div class="post">
+							<div class="post_comment">
+								<div class="form-group">
+									<form method="POST">
+										<input type="text" id="comment_box" name="comment" class="comment_box" placeholder="Confess thy opinion." size="255">
+										<input type="submit" value="Post" class="btn btn-primary">
+										<div id="count">255
+										</div>
+									</form>
+								</div>
+							</div>
+							{% for x in comments %}
+							<div class="row">
+								<div class="col-md-1">
+									<div>
+										<div class="text-center" style="vertical-align:middle;">
+											<a href="/issue/up-vote/">
+											<i class="glyphicon glyphicon-chevron-up"></i>
+											</a>
+										</div>
+										<div id="points">600</div>
+										<div class="text-center" style="vertical-align:middle; ">
+											<a href="/issue/down-vote/">
+											<i class="glyphicon glyphicon-chevron-down"></i>
+											</a>
+										</div>
+									</div>
+								</div>
+								<div class="col-md-10">
+									<div class="wrapper stickerable">
+										<div class="inner_wrapper">
+											<p class="caption">
+												<span class="ugc_text">
+												{{ x['comment'] }}
+												</span>
+											</p>
+											<div class="response_actions">
+												<div style="display:inline-block" class="user">By <a href="/u/{{ x['user'] }}">{{ x['user'] }}</a></div>
+												<a style="text-align:right" title="Reply to this post" class="reply_link logged_in tooltipped">
+													<div class="reply_icon">Reply</div>
+												</a>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							</div>
+							{% endfor %}
+						</div>
+					</li>
+				</ul>
 			</div>
 		</div>
 	</div>

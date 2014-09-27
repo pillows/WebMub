@@ -1833,7 +1833,7 @@ input[readonly] {
 	margin-bottom:100px;
 }
 
-.thread_comment .post>.wrapper {
+.inner_wrapper {
 position: relative;
 width: 630px;
 margin-bottom: 10px;
@@ -1844,19 +1844,9 @@ background: #fff;
 box-shadow: 0 0 3px rgba(0,0,0,0.25);
 }
 
-.thread_comment .sticker_bg {
-display: none;
-opacity: 0.15;
-filter: alpha(opacity=15);
-}
 
 .thread_comment.text_only .post .inner_wrapper {
 padding: 10px 15px 5px;
-}
-.thread_comment .post .inner_wrapper {
-position: relative;
-padding: 15px;
-z-index: 1;
 }
 
 .thread_comment .post {
