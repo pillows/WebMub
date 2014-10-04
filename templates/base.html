@@ -43,6 +43,7 @@
                         <li><a href="#" id="openBtn">Upload WebM</a></li>
                         {% if session['login'] %}
                         <li><a href="/profile/">{{ session['login'] }}</a></li>
+                        <li><a href="/logout/">Logout</a></li>
                         {% else %}
                         <li><a href="/login/">Login</a></li>
                         <li><a href="/register/">Sign Up</a></li>

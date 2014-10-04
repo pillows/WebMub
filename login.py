@@ -8,7 +8,7 @@ def login_():
         username = request.form['username']
         password = protect(request.form['password'])
         
-        check = db.users.findOne({"username":username, "password":password})
+        check = db.user.find_one({"username":username, "password":password})
         
         if check:
             session['login'] = username

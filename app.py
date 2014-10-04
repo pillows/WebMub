@@ -5,6 +5,7 @@ from register import register
 from dashboard import dashboard
 from video import video
 from profile import profile
+from api import api
 import config
 
 app = Flask(__name__)
@@ -13,6 +14,7 @@ app.debug = True
 
 port = 5000
 
+app.register_blueprint(api)
 app.register_blueprint(index)
 app.register_blueprint(login)
 app.register_blueprint(register)
