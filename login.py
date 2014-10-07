@@ -7,7 +7,7 @@ def login_():
     if request.method == "POST":
         username = request.form['username']
         password = protect(request.form['password'])
-        
+      
         check = db.user.find_one({"username":username, "password":password})
         
         if check:
