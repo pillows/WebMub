@@ -1,4 +1,4 @@
-from flask import Flask, session, redirect, jsonify, Blueprint
+from flask import Flask, session, redirect, jsonify, Blueprint, Response
 from config import db
 api=Blueprint("api",__name__)
 
@@ -8,14 +8,13 @@ def reports_():
         message = "Method not supported"
         error = 405
     else:
-        data = request.form['json']
-        return data
+        reutn
         
 @api.route("/api/v1/user_login",methods=['GET'])
 def user_login():
     if 'login' not in session:
         response = {"username":"False"}
-        return jsonify(response)
+        return jsonify(**response)
     else:
         response = {"username":session['login']}
-        return jsonify(response)
+        return jsonify(**response)

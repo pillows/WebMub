@@ -1892,3 +1892,7 @@ position: relative;
 #points {
     text-align: center;
 }
+
+#reportBtn {
+    cursor: pointer;
+}

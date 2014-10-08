@@ -27,9 +27,12 @@ $(document).ready(function() {
     /* Report AJAX */
     $('#reportBtn').click(function() {
         $.get( "/api/v1/user_login", function( data ) {
-            alert(data.parseJSON);
-            var jsond=data.parseJSON;
-            console.log(jsond);
+            if(data.username == "False") {
+                window.location="/login/";
+            }
+            else {
+                
+            }
         });
         
         /*

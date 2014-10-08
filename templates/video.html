@@ -29,7 +29,7 @@
 						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
 							tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam
 						</p>
-						<p><a id="reportBtn" href="#">Report</a></p>
+						<p><a id="reportBtn" onclick="mubReport('{{ data["_id"] }}')">Report</a></p>
 					</div>
 					<div class="post-atribut" >
 						<div class="row">
@@ -98,17 +98,16 @@
 				<ul class="list-unstyled">
 					<li class="thread_comment dismissable text_only">
 						<div class="post">
-						    {% if session['login'] %}
 							<div class="post_comment">
 								<div class="form-group">
 									<form method="POST">
-										<input type="text" id="comment_box" name="comment" class="comment_box form-control" placeholder="Confess thy opinion." size="255">
+										<input type="text" id="comment_box" name="comment" class="comment_box" placeholder="Confess thy opinion." size="255">
 										<input type="submit" value="Post" class="btn btn-primary">
-										<div id="count">255</div>
+										<div id="count">255
+										</div>
 									</form>
 								</div>
 							</div>
-							{% endif %}
 							{% for x in comments %}
 							<div class="row">
 								<div class="col-md-1">
@@ -143,6 +142,7 @@
 										</div>
 									</div>
 								</div>
+							</div>
 							</div>
 							{% endfor %}
 						</div>
