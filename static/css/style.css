@@ -1896,3 +1896,16 @@ position: relative;
 #reportBtn {
     cursor: pointer;
 }
+
+#edit_description {
+    display:inline-block;
+    float:right;
+}
+
+.dib {
+    display:inline-block;
+}
+
+.cursor_link {
+    cursor: pointer;
+}
