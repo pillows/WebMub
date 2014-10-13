@@ -29,7 +29,7 @@
 						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
 							tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam
 						</p>
-						<p class="dib"><a id="reportBtn" class="cursor_link" onclick="reportContent('{{ data["_id"] }}')">Report</a></p>
+						<p class="dib"><a id="reportBtn" class="cursor_link">Report</a></p>
 						<p id="edit_description"><a id="editBtn" class="cursor_link" onclick="editDescription('{{ data["_id"] }}')">Report</a></p>
 					</div>
 					<div class="post-atribut" >
@@ -99,16 +99,17 @@
 				<ul class="list-unstyled">
 					<li class="thread_comment dismissable text_only">
 						<div class="post">
+						    {% if session['login'] %}
 							<div class="post_comment">
 								<div class="form-group">
 									<form method="POST">
 										<input type="text" id="comment_box" name="comment" class="comment_box" placeholder="Confess thy opinion." size="255">
 										<input type="submit" value="Post" class="btn btn-primary">
-										<div id="count">255
-										</div>
+										<div id="count">255</div>
 									</form>
 								</div>
 							</div>
+							{% endif %}
 							{% for x in comments %}
 							<div class="row">
 								<div class="col-md-1">
@@ -130,20 +131,24 @@
 									<div class="wrapper stickerable">
 										<div class="inner_wrapper">
 											<p class="caption">
+											    
 												<span class="ugc_text">
+												    
 												{{ x['comment'] }}
+												<span style="float:right;display:block;"><i class="glyphicon glyphicon-chevron-down"></i></span>
 												</span>
+												
 											</p>
 											<div class="response_actions">
 												<div style="display:inline-block" class="user">By <a href="/u/{{ x['user'] }}">{{ x['user'] }}</a></div>
 												<a style="text-align:right" title="Reply to this post" class="reply_link logged_in tooltipped">
-													<div class="reply_icon">Reply</div>
+													<div class="options"><span>Reply<span>Report</span><span>Edit</span></div>
+													
 												</a>
 											</div>
 										</div>
 									</div>
 								</div>
-							</div>
 							</div>
 							{% endfor %}
 						</div>

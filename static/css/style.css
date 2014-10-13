@@ -1909,3 +1909,7 @@ position: relative;
 .cursor_link {
     cursor: pointer;
 }
+
+.ugc_text {
+    word-wrap: break-word;
+}

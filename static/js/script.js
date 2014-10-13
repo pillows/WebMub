@@ -3,7 +3,8 @@ $(document).ready(function() {
     /* Upload Window*/
     $('#openBtn').click(function() {
         $('#myModal').modal({
-            show: true
+            show: true,
+            keyboard:true
         })
     });
     /* End Upload Window */
@@ -25,20 +26,29 @@ $(document).ready(function() {
     /* End Comment box character count */
     
     /* Report AJAX */
-    $('#reportBtn').click(function() {
+    $('#reportBtn').click(function(contentId) {
         $.get( "/api/v1/user_login", function( data ) {
             if(data.username == "False") {
                 window.location="/login/";
             }
             else {
-                
+                    $('#reportModal').modal({
+                        show: true,
+                        keyboard: true
+                    })
+                    var report = {"id":contentId}
+                    $.ajax( {
+                        type: "POST",
+                         url:'/api/v1/reports',
+                         data: report
+                     });
+    
+                                
             }
         });
         
         /*
-        $('#reportModal').modal({
-            show: true
-        })
+        
         */
         
         /*

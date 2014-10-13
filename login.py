@@ -5,7 +5,7 @@ login=Blueprint("login",__name__)
 @login.route("/login/",methods=['GET','POST'])
 def login_():
     if request.method == "POST":
-        username = request.form['username']
+        username = request.form['username'].lower()
         password = protect(request.form['password'])
       
         check = db.user.find_one({"username":username, "password":password})
