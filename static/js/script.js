@@ -46,11 +46,6 @@ $(document).ready(function() {
         });
     });
     /* End Report AJAX */
-    
-    /* Edit Post */
-    
-    /* End Edit Post */
-
 
     /* Navbar */
     $(window).scroll(function() {
@@ -208,6 +203,13 @@ $(document).ready(function() {
     });
 });
 
-var editPost = (function(postId) {
-        console.log(postId);
-    });
+/* Edit Post */
+var editPost = (function(postId){
+    console.log(postId);
+    var postContent = $("#post_" + postId).html();
+    $("#post_" + postId).html("");
+        $("#post_" + postId).append(
+            "<textarea>" + postContent + "</textarea>"
+    );
+});   
+/* End Edit Post */
