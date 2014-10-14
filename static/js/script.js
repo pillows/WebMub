@@ -32,38 +32,24 @@ $(document).ready(function() {
                 window.location="/login/";
             }
             else {
-                    $('#reportModal').modal({
-                        show: true,
-                        keyboard: true
-                    })
-                    var report = {"id":contentId}
-                    $.ajax( {
-                        type: "POST",
-                         url:'/api/v1/reports',
-                         data: report
-                     });
-    
-                                
+                $('#reportModal').modal({
+                    show: true,
+                    keyboard: true
+                })
+                var report = {"id":contentId}
+                $.ajax( {
+                    type: "POST",
+                     url:'/api/v1/reports',
+                     data: report
+                 });         
             }
         });
-        
-        /*
-        
-        */
-        
-        /*
-        var reports = function(id) {
-            var report = {"id":id}
-            $.ajax( {
-                 url:'/api/v1/reports',
-                 data: report
-             });
-        }
-        */
-        
     });
-    
     /* End Report AJAX */
+    
+    /* Edit Post */
+    
+    /* End Edit Post */
 
 
     /* Navbar */
@@ -221,3 +207,7 @@ $(document).ready(function() {
         });
     });
 });
+
+var editPost = (function(postId) {
+        console.log(postId);
+    });
