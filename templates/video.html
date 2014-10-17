@@ -29,7 +29,7 @@
 						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
 							tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam
 						</p>
-						<p class="dib"><a id="reportBtn" class="cursor_link">Report</a></p>
+						<p class="dib"><a id="reportBtn" class="cursor_link" onclick="reportContent('{{ data["_id"] }}', 'image')" >Report</a></p>
 						<p id="edit_description"><a id="editBtn" class="cursor" onclick="editDescription('{{ data["_id"] }}')">Report</a></p>
 					</div>
 					<div class="post-atribut" >
@@ -54,39 +54,7 @@
 <!-- end:content -->
 
 <!-- begin:modal -->
-<div id="reportModal" class="modal fade" tabindex="-1" role="dialog">
-    <div class="modal-dialog">
-        <div class="modal-content">
-        	<form method="POST" enctype="multipart/form-data">	
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal">×</button>
-                    <h3>Report Content</h3>
-                </div>
-                <div class="modal-body">
-                                <h3>Upload WebM/GIF</h3>
-                                <div class="input-group">
-                                    <span class="input-group-btn">
-                                    <span class="btn btn-primary btn-file">
-                                    Browse&hellip; <input type="file" name="file">
-                                    </span>
-                                    </span>
-                                    <input type="text" class="form-control" readonly name="url">
-                                </div>
-                                <h3>OR</h3>
-                                <h3>Upload From Web</h3>
-                                <div class="form-group">
-                                    <input type="text" class="form-control">
-                                </div>
-							
-                </div>
-                <div class="modal-footer">
-                	<input type="submit" value="Upload" class="btn btn-primary"/>
-                    <button class="btn" data-dismiss="modal">Close</button>
-                </div>
-            </form>
-        </div>
-    </div>
-</div>
+<div id="reportModal" class="modal fade" tabindex="-1" role="dialog"></div>
 <!-- end:modal -->
         
 <!-- begin:comments -->
@@ -141,8 +109,9 @@
 													<div class="options">
 													    <!--<span>Reply<span>-->
 													    <span class="cursor" onclick="reportPost('{{ x["_id"] }}')">Report</span>
-													    <span class="cursor" onclick="editPost('{{ x["_id"] }}')">Edit</span>
+													    
 													    {% if session['login'] == x['user'] %}
+													    <span class="cursor" onclick="editPost('{{ x["_id"] }}')">Edit</span>
 													    <span class="cursor" onclick="alert('testing')">Delete</span>
 													    {% endif %}
 												    </div>

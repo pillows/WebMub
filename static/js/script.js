@@ -23,12 +23,14 @@ $(document).ready(function() {
         $('#count').html(charsLeft);
 
     });
+    
+    
     /* End Comment box character count */
     
     /* Report AJAX */
-    $('#reportBtn').click(function(contentId) {
-        $.get( "/api/v1/user_login", function( data ) {
-            if(data.username == "False") {
+    /*$('#reportBtn').click(function(contentId) {
+        $.get( "/api/v1/user_login", function(user_login) {
+            if(user_login.username == "False") {
                 window.location="/login/";
             }
             else {
@@ -36,15 +38,15 @@ $(document).ready(function() {
                     show: true,
                     keyboard: true
                 })
-                var report = {"id":contentId}
+                var report = {"id":contentId, "user":user_login}
                 $.ajax( {
-                    type: "POST",
+                     type: "POST",
                      url:'/api/v1/reports',
                      data: report
                  });         
             }
         });
-    });
+    });*/
     /* End Report AJAX */
 
     /* Navbar */
@@ -133,17 +135,6 @@ $(document).ready(function() {
         $container.masonry();
     });
 
-    //$('#map').gmap3('get').setCenter(new google.maps.LatLng(-7.866315,110.389574));
-
-    /* Toggle Map */
-    var mapContainer = $('.mapcontainer');
-    $('#openmap').on('click', function() {
-        $(this).toggleClass('closemap');
-        $('#map').toggleClass('showMap');
-        mapContainer.toggleClass('hidecontainer');
-        $('#map').gmap3('get').setCenter(new google.maps.LatLng(-7.866315, 110.389574));
-    });
-
     $(function() {
         $('.button-checkbox').each(function() {
             var $widget = $(this),
@@ -205,11 +196,35 @@ $(document).ready(function() {
 
 /* Edit Post */
 var editPost = (function(postId){
+    
     console.log(postId);
     var postContent = $("#post_" + postId).html();
     $("#post_" + postId).html("");
-        $("#post_" + postId).append(
-            "<textarea>" + postContent + "</textarea>"
+    $("#post_" + postId).append(
+        "<div class='form-group'><input type='text' id='comment_box_edit' name='comment' class='comment_box' value='" + postContent + "' placeholder='Confess thy opinion.' size='255' autofocus> <input type='submit' value='Post' class='btn btn-primary' id='edit_button'> <div id='count_edit'>255</div></div>"
     );
+    $("#comment_box_edit").keyup(function() {
+        var chars = $("#comment_box_edit").val().length;
+        var charsLeft = 255 - parseInt(chars);
+        //Debug
+        //console.log(charsLeft);
+        $('#count_edit').html(charsLeft);
+    });
+
+    $('#comment_box_edit').blur(function() {
+        $('#post_' + postId).html(postContent);
+    });
 });   
 /* End Edit Post */
+
+/* Report Content */
+var reportContent = (function(contentId,type) {
+    console.log(contentId);
+    console.log(type);
+    $("#reportModal").html("<div class='modal-dialog'> <div class='modal-content'> <div class='modal-header'> <button type='button' class='close' data-dismiss='modal'>×</button> <h3>Report Content</h3> </div> <div class='modal-body'><div class='input-group'> <h3>Are you sure that this content breaks WebMub's Terms and Services?</h3> </div> <div class='modal-footer'> <button class='btn btn-primary' data-dismiss='modal'>Yes</button> <button class='btn' data-dismiss='modal'>No</button> </div> </div> </div>").modal({
+                    show: true,
+                    keyboard: true
+                });
+    if($("#report".click())
+        console.log("Yes has been pressed")                
+});

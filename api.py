@@ -7,8 +7,12 @@ def reports_():
     if request.method == GET:
         message = "Method not supported"
         error = 405
+        response = {"error":str(error), "message":message}
     else:
-        reutn
+        if 'login' not in session:
+            return redirect("/login/",code=302)
+        else:
+            print request.form.get()
         
 @api.route("/api/v1/user_login",methods=['GET'])
 def user_login():
@@ -18,3 +22,7 @@ def user_login():
     else:
         response = {"username":session['login']}
         return jsonify(**response)
+        
+@api.route("/api/v1/delete",methods=['POST'])
+def delete():
+    return "00"
