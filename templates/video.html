@@ -7,13 +7,13 @@
 			<!-- break -->
 			<div class="col-md-2">
 				<div class="text-center" style="vertical-align:middle; margin-top:100%">
-					<a href="/issue/up-vote/">
+					<a href="#" data-id="{{ data['_id'] }}" data-points="1">
 					<i class="glyphicon glyphicon-chevron-up"></i>
 					</a>
 				</div>
 				<div id="points">600</div>
 				<div class="text-center" style="vertical-align:middle; ">
-					<a href="/issue/down-vote/">
+					<a href="#" data-id="{{ data['_id'] }}" data-points="-1">
 					<i class="glyphicon glyphicon-chevron-down"></i>
 					</a>
 				</div>
@@ -29,8 +29,8 @@
 						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
 							tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam
 						</p>
-						<p class="dib"><a id="reportBtn" class="cursor_link" onclick="reportContent('{{ data["_id"] }}', 'image')" >Report</a></p>
-						<p id="edit_description"><a id="editBtn" class="cursor" onclick="editDescription('{{ data["_id"] }}')">Report</a></p>
+						<p class="dib"><a id="reportBtn" class="cursor_link" data-id="{{ data["_id"] }}" data-type="image" onclick="reportContent('{{ data["_id"] }}', 'image')" >Report</a></p>
+						<p id="edit_description"><a id="editBtn" class="cursor" data-id="{{ data["_id"] }}" data-action="edit_desc" onclick="editDescription('{{ data["_id"] }}')">Report</a></p>
 					</div>
 					<div class="post-atribut" >
 						<div class="row">

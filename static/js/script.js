@@ -221,10 +221,31 @@ var editPost = (function(postId){
 var reportContent = (function(contentId,type) {
     console.log(contentId);
     console.log(type);
-    $("#reportModal").html("<div class='modal-dialog'> <div class='modal-content'> <div class='modal-header'> <button type='button' class='close' data-dismiss='modal'>×</button> <h3>Report Content</h3> </div> <div class='modal-body'><div class='input-group'> <h3>Are you sure that this content breaks WebMub's Terms and Services?</h3> </div> <div class='modal-footer'> <button class='btn btn-primary' data-dismiss='modal'>Yes</button> <button class='btn' data-dismiss='modal'>No</button> </div> </div> </div>").modal({
+    $("#reportModal").html("<div class='modal-dialog'> <div class='modal-content'> <div class='modal-header'> <button type='button' class='close' data-dismiss='modal'>×</button> <h3>Report Content</h3> </div> <div class='modal-body'><div class='input-group'> <h3>Are you sure that this content breaks WebMub's Terms and Services?</h3> </div> <div class='modal-footer'> <button id='report' class='btn btn-primary' data-dismiss='modal'>Yes</button> <button class='btn' data-dismiss='modal'>No</button> </div> </div> </div>").modal({
                     show: true,
                     keyboard: true
                 });
-    if($("#report".click())
-        console.log("Yes has been pressed")                
+    $("#report").one('click', function (e) {
+        $.get( "/api/v1/user_login", function(user_login)
+        {
+            var report = {"id":contentId, "user":user_login}
+            var response = $.ajax({
+                 type: "POST",
+                 url:'/api/v1/reports',
+                 data: report
+            });
+            
+            console.log(response);
+            
+            // Whenever I get the chance I should add this back in. But gotta get to work.
+            /* .done(function( data ) {
+                $("#reportModal").modal('hide');
+                $("#reportModal").html("");
+                
+                $("#reportModal").html("<div class='modal fade'> <div class='modal-dialog'> <div class='modal-content'> <div class='modal-header'> <button type='button' class='close' data-dismiss='modal'><span aria-hidden='true'>&times;</span><span class='sr-only'>Close</span></button> </div> <div class='modal-body'> <p>" + data.message + "</p> </div> <div class='modal-footer'> <button type='button' class='btn btn-default' data-dismiss='modal'>Close</button> </div> </div> </div></div>").modal({
+                    show: true,
+                    keyboard: true
+                    }); */
+        });
+    });
 });
