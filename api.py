@@ -23,6 +23,7 @@ return jsonify(**response)
 
 Follow the same rules as the top.
 '''
+
 @api.route("/api/v1/reports",methods=['GET','POST'])
 def reports_():
     if request.method == "GET":
@@ -62,3 +63,7 @@ def user_login():
 @api.route("/api/v1/delete",methods=['POST'])
 def delete():
     return "00"
+    
+@api.route("/api/v1/points",methods=['GET','POST'])
+def points():
+    return "0"

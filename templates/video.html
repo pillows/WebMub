@@ -7,14 +7,14 @@
 			<!-- break -->
 			<div class="col-md-2">
 				<div class="text-center" style="vertical-align:middle; margin-top:100%">
-					<a href="#" data-id="{{ data['_id'] }}" data-points="1">
-					<i class="glyphicon glyphicon-chevron-up"></i>
+					<a href="#">
+					    <i data-id="{{ data['_id'] }}" data-points="1" data-type="image" class="glyphicon glyphicon-chevron-up updown"></i>
 					</a>
 				</div>
 				<div id="points">600</div>
 				<div class="text-center" style="vertical-align:middle; ">
-					<a href="#" data-id="{{ data['_id'] }}" data-points="-1">
-					<i class="glyphicon glyphicon-chevron-down"></i>
+					<a href="#">
+					<i data-id="{{ data['_id'] }}" data-points="1" data-type="image" class="glyphicon glyphicon-chevron-down updown"></i>
 					</a>
 				</div>
 			</div>
@@ -83,14 +83,14 @@
 								<div class="col-md-1">
 									<div>
 										<div class="text-center" style="vertical-align:middle;">
-											<a href="/issue/up-vote/">
-											<i class="glyphicon glyphicon-chevron-up"></i>
+											<a href="#">
+											<i data-id="{{ data['_id'] }}" data-points="1" data-type="comment" class="glyphicon glyphicon-chevron-up updown"></i>
 											</a>
 										</div>
 										<div id="points">600</div>
 										<div class="text-center" style="vertical-align:middle; ">
-											<a href="/issue/down-vote/">
-											<i class="glyphicon glyphicon-chevron-down"></i>
+											<a href="#">
+											<i data-id="{{ data['_id'] }}" data-points="-1" data-type="comment" class="glyphicon glyphicon-chevron-down updown"></i>
 											</a>
 										</div>
 									</div>

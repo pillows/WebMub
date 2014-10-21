@@ -24,6 +24,18 @@ $(document).ready(function() {
 
     });
     
+    /* Points function */
+    
+    $(".updown").on("click", function() {
+       var type = $(this).data("type");
+       var contentId = $(this).data("id");
+       var points = $(this).data("points");
+       console.log("Type: " + type); 
+       console.log("Id: " + contentId); 
+       console.log("Points: " + points); 
+    });
+    
+    /* End Points function */
     
     /* End Comment box character count */
     
