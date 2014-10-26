@@ -24,6 +24,8 @@ $(document).ready(function() {
 
     });
     
+    /* End Comment box character count */
+    
     /* Points function */
     
     $(".updown").on("click", function() {
@@ -33,33 +35,26 @@ $(document).ready(function() {
        console.log("Type: " + type); 
        console.log("Id: " + contentId); 
        console.log("Points: " + points); 
-    });
-    
-    /* End Points function */
-    
-    /* End Comment box character count */
-    
-    /* Report AJAX */
-    /*$('#reportBtn').click(function(contentId) {
-        $.get( "/api/v1/user_login", function(user_login) {
+       
+       $.get( "/api/v1/user_login", function(user_login) {
             if(user_login.username == "False") {
                 window.location="/login/";
             }
             else {
-                $('#reportModal').modal({
-                    show: true,
-                    keyboard: true
-                })
-                var report = {"id":contentId, "user":user_login}
-                $.ajax( {
+                var points = {"id":contentId, "user":user_login, "points":points, "type":type}
+                var response = $.ajax( {
                      type: "POST",
-                     url:'/api/v1/reports',
-                     data: report
-                 });         
+                     url:'/api/v1/points',
+                     data: points
+                 });
+                 console.log(response)      
             }
         });
-    });*/
-    /* End Report AJAX */
+    });
+    
+    /* End Points function */
+    
+    
 
     /* Navbar */
     $(window).scroll(function() {
