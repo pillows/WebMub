@@ -29,28 +29,37 @@ $(document).ready(function() {
     /* Points function */
     
     $(".updown").on("click", function() {
-       var type = $(this).data("type");
-       var contentId = $(this).data("id");
-       var points = $(this).data("points");
-       console.log("Type: " + type); 
-       console.log("Id: " + contentId); 
-       console.log("Points: " + points); 
-       
-       $.get( "/api/v1/user_login", function(user_login) {
-            if(user_login.username == "False") {
-                window.location="/login/";
-            }
-            else {
-                var points = {"id":contentId, "user":user_login, "points":points, "type":type}
-                var response = $.ajax( {
-                     type: "POST",
-                     url:'/api/v1/points',
-                     data: points
-                 });
-                 console.log(response)      
-            }
-        });
-    });
+	    var contentType = $(this).data("type");
+	    var contentId = $(this).data("id");
+	    var plusminus = $(this).data("points");
+	    console.log("Type: " + type);
+	    console.log("Id: " + contentId);
+	    console.log("Points: " + plusminus);
+	
+	    $.get("/api/v1/user_login", function(user_login) {
+	        if (user_login.username == "False") {
+	            window.location = "/login/";
+	        } else {
+	            var points = {
+	                "id": contentId,
+	                "user": user_login.username,
+	                "points": plusminus,
+	                "type": type
+	            };
+	            console.log(points);
+	            var response = $.ajax({
+	                type: "POST",
+	                url: '/api/v1/points',
+	                data: points,
+	                success: function(data) {
+	                    console.log(data);
+	                    var total = data.total;
+	                    $("#points").html(total);
+	                }
+	            });
+	        }
+	    });
+	});
     
     /* End Points function */
     
