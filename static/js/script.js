@@ -32,7 +32,7 @@ $(document).ready(function() {
 	    var contentType = $(this).data("type");
 	    var contentId = $(this).data("id");
 	    var plusminus = $(this).data("points");
-	    console.log("Type: " + type);
+	    console.log("Type: " + contentType);
 	    console.log("Id: " + contentId);
 	    console.log("Points: " + plusminus);
 	
@@ -42,9 +42,9 @@ $(document).ready(function() {
 	        } else {
 	            var points = {
 	                "id": contentId,
-	                "user": user_login.username,
 	                "points": plusminus,
-	                "type": type
+	                "type": contentType,
+	                "user": user_login.username
 	            };
 	            console.log(points);
 	            var response = $.ajax({
@@ -59,6 +59,53 @@ $(document).ready(function() {
 	            });
 	        }
 	    });
+	});
+	
+	$(".delete_post").on("click", function() {
+		var accountId = $(this).data("author");
+		var contentId = $(this).data("id");
+		var contentType = $(this).data("type");
+		console.log("AccountID: " + accountId);
+		console.log("Type: " + contentType);
+	    console.log("Id: " + contentId);
+        
+        
+        $("#reportModal").html("<div class='modal-dialog'> <div class='modal-content'> <div class='modal-header'> <button type='button' class='close' data-dismiss='modal'>×</button> <h3>Delete Post</h3> </div> <div class='modal-body'><div class='input-group'> <h3>Are you sure that you want to delete this comment??</h3> </div> <div class='modal-footer'> <button id='report' class='btn btn-primary' data-dismiss='modal'>Yes</button> <button class='btn' data-dismiss='modal'>No</button> </div> </div> </div>").modal({
+            show: true,
+            keyboard: true
+        });
+
+		$("#report").one('click', function (e) {
+			var deletePost = {
+                "id": contentId,
+                "type": contentType,
+                "accountId": accountId
+        	};
+            console.log(deletePost);
+            var response = $.ajax({
+                type: "POST",
+                url: '/api/v1/delete',
+                data: deletePost,
+                success: function(data) {
+                    console.log(data);
+                    $("#" +  contentId).remove();
+                }
+            });
+
+		});
+		
+		
+
+		    
+	});
+	
+	$(".edit_post").on("click", function() {
+		var accountId = $(this).data("author");
+		var contentId = $(this).data("id");
+		var contentType = $(this).data("type");
+		console.log("AccountID: " + accountId);
+		console.log("Type: " + contentType);
+	    console.log("Id: " + contentId);
 	});
     
     /* End Points function */

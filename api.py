@@ -63,8 +63,35 @@ def user_login():
         
 @api.route("/api/v1/delete",methods=['POST'])
 def delete():
-    return "00"
-    
+    if request.method == "GET":
+        message = "Method not supported"
+        error = 405
+        response = {"error":str(error), "message":message}
+        return jsonify(**response)
+    else:
+        if 'login' not in session:
+            return redirect("/login/",code=302)
+        else:
+            contentId = request.form['id']
+            contentType = request.form['type']
+            accountId = request.form['accountId']
+            
+            print("(Client) AccountID: " + accountId)
+            
+            user_query = db.user.find_one({"username":session['login']})
+            print("(Server) AccountID: " + str(user_query['_id']))
+            if str(user_query['_id']) != accountId:
+                message = "Unauthorized function"
+                error = 401
+                response = {"error":str(error), "message":message}
+                return jsonify(**response)
+            else:
+                db.comments.remove({"_id":ObjectId(contentId), "accountId":accountId})
+                message = "Comment removed successfully."
+                code = "201"
+                response = {"code":str(code), "message":message}
+                return jsonify(**response)
+                    
 @api.route("/api/v1/points",methods=['GET','POST'])
 def points():
     if request.method == "GET":
@@ -76,12 +103,15 @@ def points():
         if 'login' not in session:
             return redirect("/login/",code=302)
         else:
+            contentId = request.form['id']
+            points = str(request.form['points'])
             contentType = request.form['type']
-            points = request.form['points']
-            contentId = request.form['contentId']
             user = request.form['user']
             
-            if points != "1" or points != "1": 
+            print("points: " + points)
+            if type(points) == type(str()):
+                print("points is a string")
+            if points != "1" or points != "-1": 
                 message = "Point value not valid"
                 error = "400"
                 response = {"error":str(error), "message":message}
@@ -91,12 +121,13 @@ def points():
                     db.webm.update({"_id":ObjectId(contentId)}, {"$inc" : { "points": 1 }})
                     message = "+1 Point change has been made successfully"
                     code = "201"
-                    total = db.webm.find({"_id":ObjectId(contentId)}).points
+                    total = db.webm.find_one({"_id":ObjectId(contentId)})['points']
                     response = {"code":str(code), "message":message, "points":points, "total":total}
                     return jsonify(**response)
                 else: 
                     db.webm.update({"_id":ObjectId(contentId)}, {"$inc" : { "points": -1 }})
                     message = "-1 Point change made successfully"
                     code = "201"
+                    total = db.webm.find_one({"_id":ObjectId(contentId)})['points']
                     response = {"code":str(code), "message":message, "points":points, "total":total}
                     return jsonify(**response)

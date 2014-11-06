@@ -11,10 +11,10 @@
 					    <i data-id="{{ data['_id'] }}" data-points="1" data-type="image" class="glyphicon glyphicon-chevron-up updown"></i>
 					</a>
 				</div>
-				<div id="points">{{ data['points'] }}</div>
+				<div id="points">{{ data['points']|int }}</div>
 				<div class="text-center" style="vertical-align:middle; ">
 					<a href="#">
-					<i data-id="{{ data['_id'] }}" data-points="1" data-type="image" class="glyphicon glyphicon-chevron-down updown"></i>
+					<i data-id="{{ data['_id'] }}" data-points="-1" data-type="image" class="glyphicon glyphicon-chevron-down updown"></i>
 					</a>
 				</div>
 			</div>
@@ -79,7 +79,7 @@
 							</div>
 							{% endif %}
 							{% for x in comments %}
-							<div class="row">
+							<div class="row" id="{{ x['_id'] }}">
 								<div class="col-md-1">
 									<div>
 										<div class="text-center" style="vertical-align:middle;">
@@ -87,7 +87,7 @@
 											<i data-id="{{ data['_id'] }}" data-points="1" data-type="comment" class="glyphicon glyphicon-chevron-up updown"></i>
 											</a>
 										</div>
-										<div id="points">600</div>
+										<div id="points">{{ x['points']|int }}</div>
 										<div class="text-center" style="vertical-align:middle; ">
 											<a href="#">
 											<i data-id="{{ data['_id'] }}" data-points="-1" data-type="comment" class="glyphicon glyphicon-chevron-down updown"></i>
@@ -111,8 +111,8 @@
 													    <span class="cursor" onclick="reportPost('{{ x["_id"] }}')">Report</span>
 													    
 													    {% if session['login'] == x['user'] %}
-													    <span class="cursor" onclick="editPost('{{ x["_id"] }}')">Edit</span>
-													    <span class="cursor" onclick="alert('testing')">Delete</span>
+													    <span class="cursor edit_post" data-id="{{ x['_id'] }}" data-author="{{ x['accountId'] }}" data-type="comment">Edit</span>
+													    <span class="cursor delete_post" data-id="{{ x['_id'] }}" data-author="{{ x['accountId'] }}" data-type="comment">Delete</span>
 													    {% endif %}
 												    </div>
 													
