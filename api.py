@@ -108,26 +108,40 @@ def points():
             contentType = request.form['type']
             user = request.form['user']
             
-            print("points: " + points)
-            if type(points) == type(str()):
-                print("points is a string")
-            if points != "1" or points != "-1": 
+            valid_amounts = ["1","-1"]
+            if points not in valid_amounts: 
                 message = "Point value not valid"
                 error = "400"
                 response = {"error":str(error), "message":message}
                 return jsonify(**response)
             else:
-                if points == "1":
-                    db.webm.update({"_id":ObjectId(contentId)}, {"$inc" : { "points": 1 }})
-                    message = "+1 Point change has been made successfully"
-                    code = "201"
-                    total = db.webm.find_one({"_id":ObjectId(contentId)})['points']
-                    response = {"code":str(code), "message":message, "points":points, "total":total}
-                    return jsonify(**response)
-                else: 
-                    db.webm.update({"_id":ObjectId(contentId)}, {"$inc" : { "points": -1 }})
-                    message = "-1 Point change made successfully"
-                    code = "201"
-                    total = db.webm.find_one({"_id":ObjectId(contentId)})['points']
-                    response = {"code":str(code), "message":message, "points":points, "total":total}
-                    return jsonify(**response)
+                if contentType == "comment":
+                    if points == "1":
+                        db.comments.update({"_id":ObjectId(contentId)}, {"$inc" : { "points": 1 }}, {"$push":{"log":user}})
+                        message = "+1 Point change has been made successfully"
+                        code = "201"
+                        total = db.comments.find_one({"_id":ObjectId(contentId)})['points']
+                        response = {"code":str(code), "message":message, "points":points, "total":total}
+                        return jsonify(**response)
+                    elif points == "-1": 
+                        db.comments.update({"_id":ObjectId(contentId)}, {"$inc" : { "points": -1 }}, {"$push":{"log":user}})
+                        message = "-1 Point change made successfully"
+                        code = "201"
+                        total = db.comments.find_one({"_id":ObjectId(contentId)})['points']
+                        response = {"code":str(code), "message":message, "points":points, "total":total}
+                        return jsonify(**response)
+                elif contentType == "webm":
+                    if points == "1":
+                        db.webm.update({"_id":ObjectId(contentId)}, {"$inc" : { "points": 1 }}, {"$push":{"log":user}})
+                        message = "+1 Point change has been made successfully"
+                        code = "201"
+                        total = db.webm.find_one({"_id":ObjectId(contentId)})['points']
+                        response = {"code":str(code), "message":message, "points":points, "total":total}
+                        return jsonify(**response)
+                    elif points == "-1":
+                        db.webm.update({"_id":ObjectId(contentId)}, {"$inc" : { "points": -1 }}, {"$push":{"log":user}})
+                        message = "-1 Point change made successfully"
+                        code = "201"
+                        total = db.webm.find_one({"_id":ObjectId(contentId)})['points']
+                        response = {"code":str(code), "message":message, "points":points, "total":total}
+                        return jsonify(**response)
