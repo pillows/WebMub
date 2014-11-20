@@ -115,6 +115,7 @@ def points():
                 response = {"error":str(error), "message":message}
                 return jsonify(**response)
             else:
+<<<<<<< HEAD
                 if contentType == "comment":
                     if points == "1":
                         db.comments.update({"_id":ObjectId(contentId)}, {"$inc" : { "points": 1 }}, {"$push":{"log":user}})
@@ -145,3 +146,55 @@ def points():
                         total = db.webm.find_one({"_id":ObjectId(contentId)})['points']
                         response = {"code":str(code), "message":message, "points":points, "total":total}
                         return jsonify(**response)
+=======
+                if points == "1":
+                    db.webm.update({"_id":ObjectId(contentId)}, {"$inc" : { "points": 1 }})
+                    message = "+1 Point change has been made successfully"
+                    code = "201"
+                    total = db.webm.find_one({"_id":ObjectId(contentId)})['points']
+                    response = {"code":str(code), "message":message, "points":points, "total":total}
+                    return jsonify(**response)
+                else: 
+                    db.webm.update({"_id":ObjectId(contentId)}, {"$inc" : { "points": -1 }})
+                    message = "-1 Point change made successfully"
+                    code = "201"
+                    total = db.webm.find_one({"_id":ObjectId(contentId)})['points']
+                    response = {"code":str(code), "message":message, "points":points, "total":total}
+                    return jsonify(**response)
+
+@api.route("/api/v1/edit_post",methods=['GET','POST'])
+def edit_post():
+    if request.method == "GET":
+        message = "Method not supported"
+        error = 405
+        response = {"error":str(error), "message":message}
+        return jsonify(**response)
+    else:
+        if 'login' not in session:
+            return redirect("/login/",code=302)
+        else:
+            contentId = request.form['id']
+            comment = str(request.form['comment'])
+            accountId = request.form['user']
+            
+            query = db.comments.find_one({"_id":ObjectId(contentId)})
+            
+            if len(comment) > 255:
+                if query['accountId'] == accountId:
+                    db.comments.update({"_id":ObjectId(contentId)}, {"$set":{"comment":comment}})
+                    message = "Edit was made to comment " + contentId 
+                    code = "201"
+                    total = db.webm.find_one({"_id":ObjectId(contentId)})['points']
+                    response = {"code":str(code), "message":message, "comment":comment}
+                else:
+                    message = "Not Authorized"
+                    error = 401
+                    response = {"error":str(error), "message":message}
+                    return jsonify(**response)
+            elif len(comment) == 0 or len(comment) < 0 or len(comment) > 255:
+                message = "Data Length Not Supported"
+                error = 433
+                response = {"error":str(error), "message":message}
+                return jsonify(**response)
+
+>>>>>>> b518dd9df961924821995eb678a4627123d760f3

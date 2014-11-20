@@ -30,12 +30,12 @@
 							tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam
 						</p>
 						<p class="dib"><a id="reportBtn" class="cursor_link" data-id="{{ data["_id"] }}" data-type="image" onclick="reportContent('{{ data["_id"] }}', 'image')" >Report</a></p>
-						<p id="edit_description"><a id="editBtn" class="cursor" data-id="{{ data["_id"] }}" data-action="edit_desc" onclick="editDescription('{{ data["_id"] }}')">Report</a></p>
+						<p id="edit_description"><a id="editBtn" class="cursor" data-id="{{ data["_id"] }}" data-action="edit_desc" onclick="editDescription('{{ data["_id"] }}')">Edit Description</a></p>
 					</div>
 					<div class="post-atribut" >
 						<div class="row">
 							<div class="col-md-4 col-sm-4 col-xs-4">
-								<a href="#"><span><i class="fa fa-heart"></i> {{ data['points'] }}</span></a>
+								<a href="#"><span><i class="fa fa-heart"></i> {{ data['points']|int }}</span></a>
 							</div>
 							<div class="col-md-4 col-sm-4 col-xs-4">
 								<a href="#"><span><i class="fa fa-comments"></i> 400</span></a>
@@ -79,7 +79,7 @@
 							</div>
 							{% endif %}
 							{% for x in comments %}
-							<div class="row" id="{{ x['_id'] }}">
+							<div class="row" id="{{ x['_id'] }}" data-easeout="fadeOutLeft">
 								<div class="col-md-1">
 									<div>
 										<div class="text-center" style="vertical-align:middle;">

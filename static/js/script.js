@@ -61,6 +61,10 @@ $(document).ready(function() {
 	    });
 	});
 	
+	/* End Points */
+	
+	/* Begin Delete Posts Function */
+	
 	$(".delete_post").on("click", function() {
 		var accountId = $(this).data("author");
 		var contentId = $(this).data("id");
@@ -70,12 +74,12 @@ $(document).ready(function() {
 	    console.log("Id: " + contentId);
         
         
-        $("#reportModal").html("<div class='modal-dialog'> <div class='modal-content'> <div class='modal-header'> <button type='button' class='close' data-dismiss='modal'>×</button> <h3>Delete Post</h3> </div> <div class='modal-body'><div class='input-group'> <h3>Are you sure that you want to delete this comment??</h3> </div> <div class='modal-footer'> <button id='report' class='btn btn-primary' data-dismiss='modal'>Yes</button> <button class='btn' data-dismiss='modal'>No</button> </div> </div> </div>").modal({
+        $("#reportModal").html("<div class='modal-dialog'> <div class='modal-content'> <div class='modal-header'> <button type='button' class='close' data-dismiss='modal'>×</button> <h3>Delete Post</h3> </div> <div class='modal-body'><div class='input-group'> <h3>Are you sure that you want to delete this comment??</h3> </div> <div class='modal-footer'> <button id='delete_post' class='btn btn-primary' data-dismiss='modal'>Yes</button> <button class='btn' data-dismiss='modal'>No</button> </div> </div> </div>").modal({
             show: true,
             keyboard: true
         });
 
-		$("#report").one('click', function (e) {
+		$("#delete_post").one('click', function (e) {
 			var deletePost = {
                 "id": contentId,
                 "type": contentType,
@@ -88,27 +92,52 @@ $(document).ready(function() {
                 data: deletePost,
                 success: function(data) {
                     console.log(data);
-                    $("#" +  contentId).remove();
+                    $("#" +  contentId).fadeOut(1000, function() {
+                        $(this).remove();
+                    });;
                 }
             });
-
-		});
-		
-		
-
-		    
+		});    
 	});
+	/* End Delete Posts Function */
 	
 	$(".edit_post").on("click", function() {
 		var accountId = $(this).data("author");
 		var contentId = $(this).data("id");
 		var contentType = $(this).data("type");
+		var postContent = $("#post_" + contentId).html();
 		console.log("AccountID: " + accountId);
 		console.log("Type: " + contentType);
 	    console.log("Id: " + contentId);
+	    
+	    $("#post_" + contentId).html("");
+	    $("#post_" + contentId).append(
+	        "<div class='form-group'><input type='text' id='comment_box_edit' name='comment' class='comment_box' value='" + postContent + "' placeholder='Confess thy opinion.' size='255' autofocus> <input type='submit' value='Post' class='btn btn-primary' id='edit_button'> <div id='count_edit'>255</div></div>"
+	    );
+	    $("#comment_box_edit").keyup(function() {
+	        var chars = $("#comment_box_edit").val().length;
+	        var charsLeft = 255 - parseInt(chars);
+	        //Debug
+	        //console.log(charsLeft);
+	        $('#count_edit').html(charsLeft);
+	    });
+	
+	    $('#comment_box_edit').blur(function() {
+	        var newContent = $('#post_' + contentId).html(postContent);
+	    });
+	    
+	    $("#edit_button").on("click", function(){
+		    if(postContent != newContent) {
+		    	var editPost = {"id":contentId, "user":accountId, "comment":newContent}
+	            var response = $.ajax({
+	                 type: "POST",
+	                 url:'/api/v1/edit_post',
+	                 data: editPost
+	            });
+	    	}
+	    });
+	    
 	});
-    
-    /* End Points function */
     
     
 
