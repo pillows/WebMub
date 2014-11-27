@@ -14,7 +14,7 @@ def video_(sid):
         if len(comment) <= 255:
             user = session['login']
             accountId = db.user.find_one({"username":user})['_id']
-            db.comments.insert({"short":sid, "parent":None, "comment":comment, "user":user, "points":0, "accountId": str(accountId)})
+            db.comments.insert({"short":sid, "parent":None, "comment":comment, "user":user, "points":0, "upvote":[], "downvote":[], "accountId": str(accountId)})
         else:
             flash("Your comment is too long")
     return render_template("video.html",data=data, comments=comments)

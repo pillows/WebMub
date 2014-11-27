@@ -26,7 +26,7 @@ def index_():
 				
 				#Get the random URL:
 				url = generate()
-				db.webm.insert({"short":url, "path":os.path.join(UPLOAD_FOLDER, filename), "user":user, "points":0, "log":[], "views":0})
+				db.webm.insert({"short":url, "path":os.path.join(UPLOAD_FOLDER, filename), "user":user, "points":0, "upvote":[], "downvote":[], "views":0})
 				return redirect("/" + url) #Redirect to a random URL.
 		#Upload via URL
 		'''
