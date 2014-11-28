@@ -116,15 +116,16 @@ def points():
                 return jsonify(**response)
             else:
                 if contentType == "comment":
-                    vote_check_comments = db.comments.find({"_id":ObjectId(contentId)})
+                    vote_check_comments = db.comments.find_one({"_id":ObjectId(contentId)})
                     if points == "1":
-                        if user in vote_check_comments.upvote:
+                        if user in vote_check_comments['upvote']:
                             message = "+1 has already been added"
                             code = "412"
                             total = db.comments.find_one({"_id":ObjectId(contentId)})['points']
                             response = {"code":str(code), "message":message, "points":points, "total":total}
+                            return jsonify(**response)
                         elif user in vote_check_comments['downvote']:
-                            db.comments.update({"_id":ObjectId(contentId)}, {"$inc" : { "points": 2 }})
+                            db.comments.update({"_id":ObjectId(contentId)}, {"$inc" : { "points": 1 }})
                             db.comments.update({"_id":ObjectId(contentId)}, {"$pull":{"downvote":user}})
                             db.comments.update({"_id":ObjectId(contentId)}, {"$push":{"upvote":user}})
                             message = "+1 Point change made successfully"
@@ -142,10 +143,10 @@ def points():
                             return jsonify(**response)
                     elif points == "-1": 
                         if user in vote_check_comments['upvote']:
-                            db.comments.update({"_id":ObjectId(contentId)}, {"$inc" : { "points": -2 }})
+                            db.comments.update({"_id":ObjectId(contentId)}, {"$inc" : { "points": -1 }})
                             db.comments.update({"_id":ObjectId(contentId)}, {"$pull":{"upvote":user}})
                             db.comments.update({"_id":ObjectId(contentId)}, {"$push":{"downvote":user}})
-                            message = "+1 Point change made successfully"
+                            message = "-1 Point change made successfully"
                             code = "201"
                             total = db.comments.find_one({"_id":ObjectId(contentId)})['points']
                             response = {"code":str(code), "message":message, "points":points, "total":total}
@@ -155,6 +156,7 @@ def points():
                             code = "412"
                             total = db.comments.find_one({"_id":ObjectId(contentId)})['points']
                             response = {"code":str(code), "message":message, "points":points, "total":total}
+                            return jsonify(**response)
                         else:
                             db.comments.update({"_id":ObjectId(contentId)}, {"$inc" : { "points": -1 }})
                             db.comments.update({"_id":ObjectId(contentId)}, {"$push":{"downvote":user}})
@@ -164,21 +166,23 @@ def points():
                             response = {"code":str(code), "message":message, "points":points, "total":total}
                             return jsonify(**response)
                 elif contentType == "webm":
-                    vote_check_webm = db.webm.find({"_id":ObjectId(contentId)})
+                    vote_check_webm = db.webm.find_one({"_id":ObjectId(contentId)})
                     if points == "1":
                         if user in vote_check_webm['upvote']:
                             message = "+1 has already been added"
                             code = "412"
                             total = db.comments.find_one({"_id":ObjectId(contentId)})['points']
                             response = {"code":str(code), "message":message, "points":points, "total":total}
+                            return jsonify(**response)
                         elif user in vote_check_webm['downvote']:
-                            db.webm.update({"_id":ObjectId(contentId)}, {"$inc" : { "points": 2 }})
+                            db.webm.update({"_id":ObjectId(contentId)}, {"$inc" : { "points": 1 }})
                             db.webm.update({"_id":ObjectId(contentId)}, {"$pull":{"downvote":user}})
                             db.webm.update({"_id":ObjectId(contentId)}, {"$push":{"upvote":user}})
                             message = "+1 Point change made successfully"
                             code = "201"
                             total = db.comments.find_one({"_id":ObjectId(contentId)})['points']
                             response = {"code":str(code), "message":message, "points":points, "total":total}
+                            return jsonify(**response)
                         else: 
                             db.webm.update({"_id":ObjectId(contentId)}, {"$inc" : { "points": 1 }})
                             db.webm.update({"_id":ObjectId(contentId)}, {"$push" : {"upvote":user}})
@@ -189,18 +193,20 @@ def points():
                             return jsonify(**response)
                     elif points == "-1":
                         if user in vote_check_webm['upvote']:
-                            db.webm.update({"_id":ObjectId(contentId)}, {"$inc" : { "points": -2 }})
+                            db.webm.update({"_id":ObjectId(contentId)}, {"$inc" : { "points": -1 }})
                             db.webm.update({"_id":ObjectId(contentId)}, {"$pull":{"upvote":user}})
                             db.webm.update({"_id":ObjectId(contentId)}, {"$push":{"downvote":user}})
-                            message = "+1 Point change made successfully"
+                            message = "-1 Point change made successfully"
                             code = "201"
                             total = db.webm.find_one({"_id":ObjectId(contentId)})['points']
                             response = {"code":str(code), "message":message, "points":points, "total":total}
+                            return jsonify(**response)
                         elif user in vote_check_webm['downvote']:
                             message = "-1 has already been added"
                             code = "412"
                             total = db.comments.find_one({"_id":ObjectId(contentId)})['points']
                             response = {"code":str(code), "message":message, "points":points, "total":total}
+                            return jsonify(**response)
                         else: 
                             db.webm.update({"_id":ObjectId(contentId)}, {"$inc" : { "points": -1 }})
                             db.webm.update({"_id":ObjectId(contentId)}, {"$push" : {"downvote":user}})

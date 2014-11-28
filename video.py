@@ -5,6 +5,7 @@ video=Blueprint("video",__name__)
 @video.route("/<sid>/",methods=['GET','POST'])
 def video_(sid):
     data = db.webm.find_one({"short":sid})
+    count = db.comments.find({"short":sid}).count()
     comments = db.comments.find({"short":sid})
     if request.method == "GET":
         db.webm.update({"short":sid},{'$inc':{ "views":1 }})
@@ -17,4 +18,4 @@ def video_(sid):
             db.comments.insert({"short":sid, "parent":None, "comment":comment, "user":user, "points":0, "upvote":[], "downvote":[], "accountId": str(accountId)})
         else:
             flash("Your comment is too long")
-    return render_template("video.html",data=data, comments=comments)
+    return render_template("video.html",data=data, comments=comments, count=count)

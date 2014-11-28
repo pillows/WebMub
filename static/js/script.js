@@ -122,17 +122,24 @@ $(document).ready(function() {
 	        $('#count_edit').html(charsLeft);
 	    });
 	
-	    $('#comment_box_edit').blur(function() {
-	        var newContent = $('#post_' + contentId).html(postContent);
-	    });
+	    /*$('#comment_box_edit').blur(function() {
+	        $('#post_' + contentId).html(postContent);
+	    });*/
+	    var newContent = $("#comment_box_edit").val();
 	    
 	    $("#edit_button").on("click", function(){
 		    if(postContent != newContent) {
 		    	var editPost = {"id":contentId, "user":accountId, "comment":newContent}
 	            var response = $.ajax({
-	                 type: "POST",
-	                 url:'/api/v1/edit_post',
-	                 data: editPost
+	                type: "POST",
+	                url:'/api/v1/edit_post',
+	                data: editPost,
+	                success: function(data) {
+	                    console.log(data);
+	                    $("#" +  contentId).fadeOut(1000, function() {
+	                        $(this).remove();
+	                    });
+	                }
 	            });
 	    	}
 	    });
