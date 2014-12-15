@@ -59,10 +59,10 @@
         <div id="myModal" class="modal fade" tabindex="-1" role="dialog">
             <div class="modal-dialog">
                 <div class="modal-content">
-                	<form method="POST" enctype="multipart/form-data">	
+                	<form method="POST" action="/upload/" enctype="multipart/form-data">	
 	                    <div class="modal-header">
 	                        <button type="button" class="close" data-dismiss="modal">×</button>
-	                        <h3>WebM/GIF Upload</h3>
+	                        <h3>WebM/GIF Upload (Max filesize: 2MB)</h3>
 	                    </div>
 	                    <div class="modal-body">
                             <div class="container">
@@ -70,17 +70,17 @@
                                     <div class="col-lg-6 col-sm-6 col-12">
                                         <h3>Upload WebM/GIF</h3>
                                         <div class="input-group">
-                                            <span class="input-group-btn">
-                                            <span class="btn btn-primary btn-file">
-                                            Browse&hellip; <input type="file" name="file">
-                                            </span>
-                                            </span>
-                                            <input type="text" class="form-control" readonly name="url">
-                                        </div>
-                                        <h3>OR</h3>
+							                <span class="input-group-btn">
+							                    <span class="btn btn-primary btn-file">
+							                        Browse&hellip; <input accept="video/webm,image/gif" type="file" name="file">
+							                    </span>
+							                </span>
+							                <input type="text" class="form-control" readonly>
+							            </div>                                       
+							            <h3>OR</h3>
                                         <h3>Upload From Web</h3>
                                         <div class="form-group">
-                                            <input type="text" class="form-control">
+                                            <input type="text" class="form-control" name="url">
                                         </div>
 									</div>
 								</div>

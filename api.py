@@ -87,6 +87,7 @@ def delete():
                 return jsonify(**response)
             else:
                 db.comments.remove({"_id":ObjectId(contentId), "accountId":accountId})
+                db.webm.update({"_id":ObjectId(contentId)}, {"$inc":{"comments":-1}})
                 message = "Comment removed successfully."
                 code = "201"
                 response = {"code":str(code), "message":message}

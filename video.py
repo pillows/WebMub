@@ -16,6 +16,7 @@ def video_(sid):
             user = session['login']
             accountId = db.user.find_one({"username":user})['_id']
             db.comments.insert({"short":sid, "parent":None, "comment":comment, "user":user, "points":0, "upvote":[], "downvote":[], "accountId": str(accountId)})
+            db.webm.update({"short":sid}, {"$inc":{"comments":1}})
         else:
             flash("Your comment is too long")
     return render_template("video.html",data=data, comments=comments, count=count)
