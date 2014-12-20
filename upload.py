@@ -23,12 +23,13 @@ def upload_():
             filename = file.filename
             
             if file and allowed_file(filename):
-            	print "File: " + file
-                print "File size: " + str(len(file.read()))
-                print "File contents: " + str(file.read())
+            	#print "File: " + file
+                #print "File size: " + str(len(file.read()))
+                #print "File contents: " + str(file.read())
                 #Save the file to the upload folder. Maybe a CDN in the future.
                 filename = secure_filename(file.filename)
                 file.save(os.path.join(UPLOAD_FOLDER, filename))
+                print os.stat(os.path.join(UPLOAD_FOLDER, filename))
                 
                 #Get the random URL:
                 url = generate()

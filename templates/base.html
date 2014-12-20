@@ -59,7 +59,33 @@
         <div id="myModal" class="modal fade" tabindex="-1" role="dialog">
             <div class="modal-dialog">
                 <div class="modal-content">
-                	<form method="POST" action="/upload/" enctype="multipart/form-data">	
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">×</button>
+                        <h3>test<!--WebM/GIF Upload (Max filesize: 2MB)--></h3>
+                    </div>
+                    <div class="modal-body">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-lg-1 col-sm-6 col-12"></div>
+                                <div class="col-lg-2 col-sm-6 col-12 cursor" style="text-align:center">
+                                    <i class="glyphicon glyphicon-upload" style="font-size:5em; padding:20% 0% 20% 0%"></i>
+                                    <br />
+                                    Upload Your WebM/Gif
+                                </div>
+                                <div class="col-lg-3 col-sm-6 col-12 cursor" style="text-align:center">
+                                    <i class="glyphicon glyphicon-globe" style="font-size:5em; padding:20% 0% 20% 0%"></i>
+                                    <br />
+                                    Upload From A URL
+                                </div>
+                                
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn" data-dismiss="modal">Close</button>
+                    </div>
+                	<!--
+                    <form method="POST" action="/upload/" enctype="multipart/form-data">	
 	                    <div class="modal-header">
 	                        <button type="button" class="close" data-dismiss="modal">×</button>
 	                        <h3>WebM/GIF Upload (Max filesize: 2MB)</h3>
@@ -91,6 +117,7 @@
 	                        <button class="btn" data-dismiss="modal">Close</button>
 	                    </div>
 	                </form>
+	                -->
                 </div>
             </div>
         </div>
