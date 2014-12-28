@@ -24,7 +24,31 @@ return jsonify(**response)
 
 Follow the same rules as the top.
 '''
-
+@api.route("/api/v1/verify",methods=['GET','POST'])
+def verify_url():
+    if request.method == "GET":
+        message = "Method not supported"
+        error = 405
+        response = {"error":str(error), "message":message}
+        return jsonify(**response)
+    else:
+        if 'login' not in session:
+            return redirect("/login/",code=302)
+        else:
+            url = request.form["url"]
+            check = url.split(".webm")
+            
+            if check[len(check)-1] == "":
+                message = "Good URL. For now."
+                code = "201"
+                response = {"code":str(code), "message":message}
+                return jsonify(**response)
+            else:
+                message = "Bad URL. Try again."
+                error = "409"
+                response = {"error":str(error), "message":message}
+                return jsonify(**response)
+ 
 @api.route("/api/v1/reports",methods=['GET','POST'])
 def reports_():
     if request.method == "GET":
