@@ -113,7 +113,7 @@ a:hover{
 }
 
 h1,h2,h4,h5,h6{
-	font-family: 'Noto Serif', serif;
+	font-family: 'Raleway', sans-serif;
 	font-weight: 700;
 }
 
@@ -1886,7 +1886,7 @@ position: relative;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
-  display:         flex;
+  display: flex;
 }
 
 #points {
@@ -1914,3 +1914,44 @@ position: relative;
     word-wrap: break-word;
 }
 
+.dragndrop {
+    color: #000000;
+    width: 100%;
+    height: 100%;
+    border: 4px dashed #6b6e80;
+}
+.upload-step1{
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  line-height: 170px;
+  font-size: 16px;
+}
+
+.upload-step11 {
+  text-align: left;
+  font-size: 14px;
+}
+.file-input {
+  position: absolute;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  outline: none;
+  opacity: 0;
+}
+
+.upload-step2 {
+    text-align:left;
+    font-size:14px;
+}
+
+.description-ta {
+    height:150px;
+}
+
+.upload-choices {
+    font-size:5em; 
+    padding:10% 0% 10% 0%;
+}

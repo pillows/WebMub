@@ -16,7 +16,44 @@ $(document).ready(function() {
     });
     
     $('.file-upload').click(function() {
-	    $('.modal-body').html("");
+	    $('.upload-body').html("<div class='col-lg-12 col-sm-12 col-12 cursor' style='text-align:center'><form class='dragndrop' action='/upload/' method='POST' enctype='multipart/form-data'> <input type='file' accept='video/webm,image/gif' class='file-input' name='file'><p class='upload-step1'>Drag your files here or click in this area.</p></form></div>");
+	    $('form input').change(function () {
+            $('form p').text(this.files[0].name + " is loaded. (Put better text here)");
+        
+            if($("form input")[0].files.length > 0) {
+                $(".file-input").css({"visibility":"hidden"});
+                $(".upload-step1").hide();
+                $(".dragndrop").css({"border":"none"});
+                $(".dragndrop").append("<div class='upload-step2'>Description (Optional): </div><div class='form-group'> <textarea class='form-control description-ta' name='description'></textarea></div>");
+                $(".modal-footer").append("<button class='btn btn-primary upload-submit'>Submit</button>");
+                
+                $(".upload-submit").click(function () {
+                   $("form").submit();
+                });
+            }
+        });
+        
+        $(".close-btn").click(function() {
+           return $(".upload-body").html("<div class='col-lg-6 col-sm-6 col-12 cursor file-upload' style='text-align:center'> <i class='glyphicon glyphicon-upload upload-choices'></i> <br /> <h3>Upload Your WebM/GIF</h3> </div> <div class='col-lg-6 col-sm-6 col-12 cursor direct-upload' style='text-align:center'> <i class='glyphicon glyphicon-globe upload-choices'></i> <br /> <h3>Upload From A URL</h3> </div>"); 
+           
+        });
+        
+        return false;
+    });
+    
+    $(".direct-upload").click(function() {
+        $(".upload-body").html("<div class='col-lg-12 col-sm-12 col-12 cursor' style='text-align:center'><form action='/upload/' method='POST' enctype='multipart/form-data'> <div class='upload-step11'>URL: <input type='text' class='form-control' name='url'/></div><br /><div class='upload-step2'>Description (Optional): </div><div class='form-group'> <textarea class='form-control description-ta' name='description'></textarea></div></form></div>");
+        $(".modal-footer").append("<button class='btn btn-primary upload-submit'>Submit</button>");
+        $(".upload-submit").click(function () {
+           $("form").submit();
+        });
+        
+        $(".close-btn").click(function() {
+           $(".upload-body").html("<div class='col-lg-6 col-sm-6 col-12 cursor file-upload' style='text-align:center'> <i class='glyphicon glyphicon-upload upload-choices'></i> <br /> <h3>Upload Your WebM/GIF</h3> </div> <div class='col-lg-6 col-sm-6 col-12 cursor direct-upload' style='text-align:center'> <i class='glyphicon glyphicon-globe upload-choices'></i> <br /> <h3>Upload From A URL</h3> </div>"); 
+           return false;
+        });
+        
+        return false;
     });
     /* End Upload Window */
     
