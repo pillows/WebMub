@@ -5,6 +5,7 @@ import urllib2
 import os
 import random
 import pprint
+from lib.filesig import filesig
 upload=Blueprint("upload",__name__)
 
 def allowed_file(filename):

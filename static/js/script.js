@@ -6,7 +6,6 @@ $(document).on('change', '.btn-file :file', function() {
 });
 
 $(document).ready(function() {
-    
     /* Upload Window*/
     $('#openBtn').click(function() {
         $('#myModal').modal({
@@ -42,21 +41,34 @@ $(document).ready(function() {
     });
     
     $(".direct-upload").click(function() {
-        $(".upload-body").html("<div class='col-lg-12 col-sm-12 col-12 cursor' style='text-align:center'><form action='/upload/' method='POST' enctype='multipart/form-data'> <div class='upload-step11'>URL: <input type='text' class='form-control webm-check' name='url'/></div><br /><div class='upload-step2'>Description (Optional): </div><div class='form-group'> <textarea class='form-control description-ta' name='description'></textarea><div class='webm-preview'></div></div></form></div>");
+        var urlCheck = null;
+        $(".upload-body").html("<div class='col-lg-12 col-sm-12 col-12 cursor' style='text-align:center'><form action='/upload/' method='POST' enctype='multipart/form-data'> <div class='upload-step11'>URL: <input type='text' class='form-control webm-check' name='url'/><div id='message'></div></div><br /><div class='upload-step2'>Description (Optional): </div><div class='form-group'> <textarea class='form-control description-ta' name='description'></textarea><div class='webm-preview'></div></div></form></div>");
         $(".modal-footer").append("<button class='btn btn-primary upload-submit'>Submit</button>");
         $(".upload-submit").click(function () {
            $("form").submit();
         });
         
-        $(".webm-check").on("change keyup paste",function() {
-	        var url = $("webm-check").val();
-	        var resp = {url:url};
+        $(".webm-check").on("input",function() {
+            var url = $(".webm-check").val();
+	        var resp = {"url":url};
+	        //console.log(url);
+	        //console.log(resp);
+	        
 	        var response = $.ajax({
                 type: "POST",
                 url: '/api/v1/verify',
                 data: resp,
                 success: function(data) {
-                    console.log(data);
+                    //console.log(data);
+                    if(data.code == "201") {
+                        urlCheck = true;
+                        $("#message").html("<div class='alert alert-success'>Mub grants you access.</div>");
+                    }
+                    else {
+                        urlCheck = false;
+                        $("#message").html("<div class='alert alert-danger' role='alert'> <span class='glyphicon glyphicon-exclamation-sign' aria-hidden='true'></span> <span class='sr-only'>Error:</span> Enter a valid link.</div>");
+                        
+                    }
                 }
             });
         });
