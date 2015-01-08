@@ -34,7 +34,7 @@
 	}
 
 	#portfolio .container-portfolio > li:nth-child(2n + 1) {
-		width: 50%;
+wwidth: 50%;
 		clear: both;
 		display: inline-table;
 		margin: 0;
