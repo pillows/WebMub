@@ -26,8 +26,7 @@
 						</video>
 					</div>
 					<div class="post-content">
-						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-							tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam
+						<p>{{ data['description'] }}
 						</p>
 						<p class="dib"><a id="reportBtn" class="cursor_link" data-id="{{ data["_id"] }}" data-type="image" onclick="reportContent('{{ data["_id"] }}', 'image')" >Report</a></p>
 						<p id="edit_description"><a id="editBtn" class="cursor" data-id="{{ data["_id"] }}" data-action="edit_desc" onclick="editDescription('{{ data["_id"] }}')">Edit Description</a></p>
@@ -56,7 +55,7 @@
 <!-- begin:modal -->
 <div id="reportModal" class="modal fade" tabindex="-1" role="dialog"></div>
 <!-- end:modal -->
-        
+
 <!-- begin:comments -->
 <section id="content-comments" class="pagination-centered">
 	<div class="container">
@@ -78,6 +77,15 @@
 								</div>
 							</div>
 							{% endif %}
+							<div class="col-md-12">
+								<ul class="pagination">
+									<li class="disabled"><a href="#">«</a></li>
+									<li class="active"><a href="#">1 <span class="sr-only">(current)</span></a></li>
+									<li><a href="#">2</a></li>
+									<li><a href="#">3</a></li>
+									<li><a href="#">»</a></li>
+								</ul>
+							</div>
 							{% for x in comments %}
 							<div class="row" id="{{ x['_id'] }}" data-easeout="fadeOutLeft">
 								<div class="col-md-1">
@@ -99,9 +107,9 @@
 									<div class="wrapper stickerable">
 										<div class="inner_wrapper">
 											<p class="caption">
-											    
+
 												<span id="post_{{ x['_id'] }}" class="ugc_text">{{ x['comment'] }}</span>
-												
+
 											</p>
 											<div class="response_actions">
 												<div style="display:inline-block" class="user">By <a href="/u/{{ x['user'] }}">{{ x['user'] }}</a></div>
@@ -109,13 +117,13 @@
 													<div class="options">
 													    <!--<span>Reply<span>-->
 													    <span class="cursor" onclick="reportPost('{{ x["_id"] }}')">Report</span>
-													    
+
 													    {% if session['login'] == x['user'] %}
 													    <span class="cursor edit_post" data-id="{{ x['_id'] }}" data-author="{{ x['accountId'] }}" data-type="comment">Edit</span>
 													    <span class="cursor delete_post" data-id="{{ x['_id'] }}" data-author="{{ x['accountId'] }}" data-type="comment">Delete</span>
 													    {% endif %}
 												    </div>
-													
+
 												</a>
 											</div>
 										</div>
@@ -123,6 +131,15 @@
 								</div>
 							</div>
 							{% endfor %}
+							<div class="col-md-12">
+								<ul class="pagination">
+									<li class="disabled"><a href="#">«</a></li>
+									<li class="active"><a href="#">1 <span class="sr-only">(current)</span></a></li>
+									<li><a href="#">2</a></li>
+									<li><a href="#">3</a></li>
+									<li><a href="#">»</a></li>
+								</ul>
+							</div>
 						</div>
 					</li>
 				</ul>

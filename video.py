@@ -11,7 +11,8 @@ def video_(sid):
         db.webm.update({"short":sid},{'$inc':{ "views":1 }})
     else:
         comment = request.form['comment']
-        
+
+
         if len(comment) <= 255:
             user = session['login']
             accountId = db.user.find_one({"username":user})['_id']
