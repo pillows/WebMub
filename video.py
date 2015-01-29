@@ -10,10 +10,9 @@ def video_(sid):
     data = db.webm.find_one({"short":sid})
     count = db.comments.find({"short":sid}).count()
     comments = db.comments.find({"short":sid})
-
-    if request.method == "GET":
-        db.webm.update({"short":sid},{'$inc':{ "views":1 }})
-    else:
+    db.webm.update({"short":sid},{'$inc':{ "views":1 }})
+    
+    if request.method == "POST":
         comment = request.form['comment']
 
 
@@ -26,4 +25,5 @@ def video_(sid):
 
         else:
             flash("Your comment is too long")
+    print data
     return render_template("video.html",data=data, comments=comments, count=count)

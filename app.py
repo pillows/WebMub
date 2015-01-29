@@ -8,10 +8,15 @@ from profile import profile
 from api import api
 from upload import upload
 import config
+import os
+
+APP_ROOT = os.path.dirname(os.path.abspath(__file__))
+UPLOAD_FOLDER = os.path.join(APP_ROOT, 'uploads')
 
 app = Flask(__name__)
 app.secret_key = "HUAa%[3cI76px',Bu}?9nS6~_4x&:{57mBX|FE2p0;<}0fX{E9m695xs`Q(PN}R"
 app.debug = True
+app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
 port = 5000
 
