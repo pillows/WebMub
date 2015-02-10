@@ -9,8 +9,13 @@ from lib.filesig import filesig
 upload=Blueprint("upload",__name__)
 
 def allowed_file(filename):
-    return '.' in filename and \
-           filename.rsplit('.', 1)[1] in ALLOWED_EXTENSIONS
+    print filename
+    for x in ALLOWED_EXTENSIONS:
+        if filename.endswith("."+x):
+            return True
+
+APP_ROOT = os.path.dirname(os.path.abspath(__file__))
+UPLOAD_FOLDER = os.path.join(APP_ROOT, 'uploads/')
 
 @upload.route("/upload/",methods=['GET','POST'])
 def upload_():
@@ -18,34 +23,39 @@ def upload_():
         user = session['login']
     if request.method == "POST":
         #Upload via form
-        pprint.pprint(request.files)
+        #pprint.pprint(request.files)
         if request.files['file']:
             file = request.files['file']
             description = request.form['description']
-            
+
             #Get the filename and save it. Needed in order to save the filepath.
             filename = file.filename
-            
+            print file
             if file and allowed_file(filename):
+                print "We're IN!"
             	#print "File: " + file
                 #print "File size: " + str(len(file.read()))
                 #print "File contents: " + str(file.read())
                 #Save the file to the upload folder. Maybe a CDN in the future.
                 filename = secure_filename(file.filename)
-                file.save(os.path.join(UPLOAD_FOLDER, filename))
-                print os.stat(os.path.join(UPLOAD_FOLDER, filename))
-                
+                #print os.stat(os.path.join(UPLOAD_FOLDER, filename))
+                with open(UPLOAD_FOLDER+"/"+filename, 'wb') as f:
+                    f.write(file.read())
+
+
                 with open("uploads/" + filename, 'rb') as content:
                     f = content.read()
                 if filesig(f):
                     #Get the random URL:
                     url = generate()
-                    
+
                     db.webm.insert({"short":url, "path":os.path.join(UPLOAD_FOLDER, filename), "user":user, "points":0, "upvote":[], "downvote":[], "description":description, "views":0, "comments":0})
                     return redirect("/" + url) #Redirect to a random URL.
                 else:
+                    print "BSD"
                     return abort(400)
             else:
+                print "ASD"
                 return abort(400) #Bad Request: Something not supported by the server. Sneaky hackers :P
                 #flash("File format not supported")
         #Upload via URL
