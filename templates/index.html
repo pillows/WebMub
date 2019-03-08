@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% block content %}
+    <!-- begin:content -->
+    <section id="content">
+      <div class="container">
+        <div class="row container-post">
+            <!-- break -->
+            {% for x in webm %}
+            <div class="col-md-4 col-sm-6">
+                <div class="post-container">
+                    <div class="post-content no-padding white-tooltip" data-toggle="tooltip" data-placement="bottom" data-html="true" title="<div class='post-atribut'>
+                        <div class='row'>
+                            <div class='col-md-4 col-sm-4 col-xs-4'>
+                                <a href='#'><span><i class='fa fa-heart'></i>{{ x['points']|round|int }}</span></a>
+                            </div>
+                            <div class='col-md-4 col-sm-4 col-xs-4'>
+                                <a href='#'><span><i class='fa fa-comments'></i>{{ x['comments']|round|int }}</span></a>
+                            </div>
+                            <div class='col-md-4 col-sm-4 col-xs-4'>
+                                <a href='#'><span><i class='fa fa-eye'></i> {{ x['views']|round|int }}</span></a>
+                            </div>
+                        </div>
+                    </div>">
+                        <a href="/{{ x['short'] }}/"><video width="358" height="239" controls="controls" preload="none"><source src="http://video.webmfiles.org/big-buck-bunny_trailer.webm" type="video/webm"></video></a>
+                    </div>
+                    
+                    
+                </div>
+            </div>
+            {% endfor %}
+        <!-- end:article -->
+
+      </div>
+    </section>
+    <!-- end:content -->
+{% endblock %}
