@@ -18,7 +18,11 @@ app.secret_key = "HUAa%[3cI76px',Bu}?9nS6~_4x&:{57mBX|FE2p0;<}0fX{E9m695xs`Q(PN}
 app.debug = True
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
+<<<<<<< HEAD
 port = 5000
+=======
+port = 5010
+>>>>>>> ab3c2bc1263f99d14e7ed1f708da874aede8f9ad
 
 app.register_blueprint(api)
 app.register_blueprint(index)
