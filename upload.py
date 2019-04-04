@@ -49,7 +49,7 @@ def upload_():
                     #Get the random URL:
                     url = generate()
 
-                    db.webm.insert({"short":url, "path":os.path.join(UPLOAD_FOLDER, filename), "user":user, "points":0, "upvote":[], "downvote":[], "description":description, "views":0, "comments":0})
+                    db.webm.insert({"short":url, "path":os.path.join(UPLOAD_FOLDER, filename), "filename":filename, "user":user, "points":0, "upvote":[], "downvote":[], "description":description, "views":0, "comments":0})
                     return redirect("/" + url) #Redirect to a random URL.
                 else:
                     print "BSD"
